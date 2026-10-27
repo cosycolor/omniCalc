@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 
-Sitemap: https://omnicalc.pages.dev/sitemap.xml
+Sitemap: https://myomnicalc.com/sitemap.xml
