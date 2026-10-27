@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>분수 계산기 | 분수 덧셈 뺄셈 곱셈 나눗셈 & 기약분수 자동 약분 (OmniCalc)</title>
+  <meta name="description" content="분수의 사칙연산(덧셈, 뺄셈, 곱셈, 나눗셈), 최대공약수를 이용한 기약분수 자동 약분, 대분수 및 소수점 변환까지 지원하는 무료 온라인 분수 계산기입니다.">
+  <meta name="keywords" content="분수 계산기, 분수 덧셈, 분수 곱셈, 분수 약분, 기약분수 계산기, 대분수 변환, fraction calculator">
+
+  <link rel="canonical" href="https://omnicalc.pages.dev/fraction.html">
+  <link rel="alternate" hreflang="ko" href="https://omnicalc.pages.dev/fraction.html">
+  <link rel="alternate" hreflang="en" href="https://omnicalc.pages.dev/en/fraction.html">
+
+  <script>(function(){try{var l=localStorage.getItem('omni_lang')||((navigator.language||'').toLowerCase().startsWith('ko')?'ko':'en');document.documentElement.lang=l;}catch(e){}})();</script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/calculator.css">
+  <link rel="stylesheet" href="css/content.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "분수 계산기 (OmniCalc)",
+        "url": "https://omnicalc.pages.dev/fraction.html",
+        "applicationCategory": "EducationalApplication"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "분모가 다른 분수의 덧셈과 뺄셈은 어떻게 하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "분모가 다를 때는 두 분모의 '최소공배수'를 구하여 분모를 같게 맞추는 '통분(Common denominator)' 과정을 거친 후, 분자끼리 더하거나 뺍니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "기약분수란 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "분자와 분모의 최대공약수가 1뿐이어서 더 이상 약분되지 않는 가장 간단한 형태의 분수를 기약분수(Irreducible fraction)라고 합니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" title="모두의 계산기 홈" data-i18n-title="logoTitle">
+        <span class="logo-badge">∑</span>
+        <span class="brand-name" data-i18n="brandName">모두의 계산기</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">홈</a></li>
+          <li class="nav-item"><a href="scientific.html" data-i18n="navScientific">공학용</a></li>
+          <li class="nav-item"><a href="percent.html" data-i18n="navPercent">퍼센트</a></li>
+          <li class="nav-item"><a href="unit-converter.html" data-i18n="navUnit">단위변환</a></li>
+          <li class="nav-item active"><a href="fraction.html" data-i18n="navFraction">분수</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="langToggleBtn" class="lang-selector" aria-label="언어 변경">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <span>한국어</span>
+        </button>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="테마 전환" data-i18n-aria="themeToggleLabel">
+          <span id="themeToggleIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+        </button>
+        <button id="mobileNavToggle" class="btn-icon mobile-nav-toggle" aria-label="메뉴 열기" data-i18n-aria="mobileNavLabel">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="container">
+
+      <section class="page-hero">
+        <h1 data-i18n="heroTitleFraction">분수 사칙연산 및 약분 계산기</h1>
+        <p data-i18n="heroDescFraction">분수 더하기, 빼기, 곱하기, 나누기와 기약분수 자동 약분을 즉시 확인하세요.</p>
+      </section>
+
+      <!-- Top Ad Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot ad-slot-leaderboard">
+          <span>Google AdSense Header Unit (728 × 90)</span>
+        </div>
+      </div>
+
+      <!-- Fraction Interactive Card -->
+      <div class="specialized-card" style="max-width: 680px;">
+        <div class="fraction-ui-wrap">
+          <div class="fraction-box">
+            <input type="number" id="f_num1" class="c-input" data-i18n="fPlaceholderNum1" placeholder="분자 1" value="2" style="text-align: center;">
+            <div class="fraction-divider"></div>
+            <input type="number" id="f_den1" class="c-input" data-i18n="fPlaceholderDen1" placeholder="분모 1" value="3" style="text-align: center;">
+          </div>
+
+          <select id="f_op" class="fraction-op-select">
+            <option value="+">＋</option>
+            <option value="-">−</option>
+            <option value="*">×</option>
+            <option value="/">÷</option>
+          </select>
+
+          <div class="fraction-box">
+            <input type="number" id="f_num2" class="c-input" data-i18n="fPlaceholderNum2" placeholder="분자 2" value="3" style="text-align: center;">
+            <div class="fraction-divider"></div>
+            <input type="number" id="f_den2" class="c-input" data-i18n="fPlaceholderDen2" placeholder="분모 2" value="4" style="text-align: center;">
+          </div>
+
+          <span style="font-size: 2rem; font-weight: 800; color: var(--accent-primary);">=</span>
+        </div>
+
+        <div class="spec-calc-grid" style="margin-top: 1.5rem;">
+          <div class="calc-box-item">
+            <div class="calc-box-title" data-i18n="fSimplifiedLabel">기약분수 결과</div>
+            <div class="calc-output-box">
+              <div class="calc-output-value" id="f_res_fraction" style="font-size: 1.8rem;">17/12</div>
+            </div>
+          </div>
+
+          <div class="calc-box-item">
+            <div class="calc-box-title" data-i18n="fMixedLabel">대분수 표기</div>
+            <div class="calc-output-box">
+              <div class="calc-output-value" id="f_res_mixed" style="font-size: 1.8rem;">1 5/12</div>
+            </div>
+          </div>
+
+          <div class="calc-box-item">
+            <div class="calc-box-title" data-i18n="fDecimalLabel">소수점 (Decimal) 환산</div>
+            <div class="calc-output-box">
+              <div class="calc-output-value" id="f_res_decimal" style="font-size: 1.8rem;">1.416667</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mid Ad Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot ad-slot-banner">
+          <span>Google AdSense Mid Responsive Unit</span>
+        </div>
+      </div>
+
+      <!-- SEO In-depth Guide (Dual Language) -->
+      <section class="content-guide-section">
+        
+        <!-- Korean Version -->
+        <div class="lang-ko">
+          <div class="content-guide-header">
+            <h2>분수 연산 원리 및 약분 완벽 정리</h2>
+            <p>초·중·고 수학 및 실생활 측정에서 필수적인 분수의 덧셈, 뺄셈, 곱셈, 나눗셈 계산 원리를 알기 쉽게 설명합니다.</p>
+          </div>
+
+          <div class="guide-block">
+            <h3>분수 사칙연산 공식</h3>
+            <div class="formula-card">
+              <div class="formula-card-title">1. 분수의 덧셈과 뺄셈 (통분 공식)</div>
+              <div class="formula-math">(a / b) ± (c / d) = (a·d ± b·c) / (b·d)</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-card-title">2. 분수의 곱셈 공식</div>
+              <div class="formula-math">(a / b) × (c / d) = (a·c) / (b·d)</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-card-title">3. 분수의 나눗셈 (역수 곱셈 공식)</div>
+              <div class="formula-math">(a / b) ÷ (c / d) = (a / b) × (d / c) = (a·d) / (b·c)</div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>최대공약수(GCD)를 이용한 약분 과정</h3>
+            <p>연산 결과로 도출된 분수의 분자와 분모를 각각 두 수의 <strong>최대공약수(Greatest Common Divisor)</strong>로 나누어 주면 더 이상 나누어떨어지지 않는 가장 깔끔한 <strong>기약분수</strong>를 얻을 수 있습니다.</p>
+          </div>
+
+          <div class="guide-block">
+            <h3>자주 묻는 질문 (FAQ)</h3>
+            <div class="faq-wrap">
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>진분수, 가분수, 대분수는 어떻게 구분하나요?</span>
+                  <span class="faq-icon-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                  • <strong>진분수</strong>: 분자가 분모보다 작은 분수 (예: 2/3)<br>
+                  • <strong>가분수</strong>: 분자가 분모와 같거나 큰 분수 (예: 5/3)<br>
+                  • <strong>대분수</strong>: 자연수와 진분수의 결합 형태로 나타낸 분수 (예: 1과 2/3)
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>분모가 0이 될 수 없는 이유는 무엇인가요?</span>
+                  <span class="faq-icon-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                  수학에서 0으로 나누는 행위(Division by zero)는 정의되지 않습니다. 따라서 분모가 0인 분수는 수학적으로 존재할 수 없습니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- English Version -->
+        <div class="lang-en">
+          <div class="content-guide-header">
+            <h2>Fraction Arithmetic & Simplification Guide</h2>
+            <p>Essential mathematical principles and formulas for adding, subtracting, multiplying, and dividing fractions with step-by-step reduction.</p>
+          </div>
+
+          <div class="guide-block">
+            <h3>Fraction Arithmetic Formulas</h3>
+            <div class="formula-card">
+              <div class="formula-card-title">1. Addition & Subtraction (Common Denominator)</div>
+              <div class="formula-math">(a / b) ± (c / d) = (a·d ± b·c) / (b·d)</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-card-title">2. Fraction Multiplication</div>
+              <div class="formula-math">(a / b) × (c / d) = (a·c) / (b·d)</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-card-title">3. Fraction Division (Reciprocal Rule)</div>
+              <div class="formula-math">(a / b) ÷ (c / d) = (a / b) × (d / c) = (a·d) / (b·c)</div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>Automatic Simplification with GCD</h3>
+            <p>To reduce a fraction to its lowest terms (irreducible fraction), both numerator and denominator are divided by their <strong>Greatest Common Divisor (GCD)</strong>.</p>
+          </div>
+
+          <div class="guide-block">
+            <h3>Frequently Asked Questions (FAQ)</h3>
+            <div class="faq-wrap">
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>What are Proper, Improper, and Mixed Fractions?</span>
+                  <span class="faq-icon-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                  • <strong>Proper Fraction</strong>: Numerator is smaller than the denominator (e.g., 2/3).<br>
+                  • <strong>Improper Fraction</strong>: Numerator is equal to or greater than the denominator (e.g., 5/3).<br>
+                  • <strong>Mixed Fraction</strong>: A whole number combined with a proper fraction (e.g., 1 2/3).
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Why can the denominator never be zero?</span>
+                  <span class="faq-icon-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                  In mathematics, division by zero is undefined. Therefore, any fraction having a denominator of zero is mathematically impossible.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Bottom Ad Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot ad-slot-leaderboard">
+          <span>Google AdSense Bottom Responsive Unit (728 × 90)</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 0.75rem;">
+            <span class="logo-badge">∑</span>
+            <span class="brand-name" data-i18n="brandName">모두의 계산기</span>
+          </div>
+          <p data-i18n="footerDesc">모두의 계산기(OmniCalc)는 학생, 엔지니어, 직장인 누구나 무료로 쉽고 빠르게 사용할 수 있는 웹 기반 다기능 계산기 플랫폼입니다.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerTools">계산기 도구</h4>
+          <ul class="footer-links">
+            <li><a href="scientific.html" data-i18n="navScientific">공학용 계산기</a></li>
+            <li><a href="percent.html" data-i18n="navPercent">퍼센트 계산기</a></li>
+            <li><a href="unit-converter.html" data-i18n="navUnit">단위 변환기</a></li>
+            <li><a href="fraction.html" data-i18n="navFraction">분수 계산기</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerLegal">신뢰 및 정책</h4>
+          <ul class="footer-links">
+            <li><a href="about.html" data-i18n="footerAbout">서비스 소개</a></li>
+            <li><a href="privacy.html" data-i18n="footerPrivacy">개인정보처리방침</a></li>
+            <li><a href="terms.html" data-i18n="footerTerms">이용약관</a></li>
+            <li><a href="contact.html" data-i18n="footerContact">문의하기</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerAdmin">사이트 관리</h4>
+          <ul class="footer-links">
+            <li><a href="admin.html" class="footer-admin-link">운영자 통계 리더보드</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 OmniCalc. <span data-i18n="footerRights">모든 권리 보유.</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/fraction-calc.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

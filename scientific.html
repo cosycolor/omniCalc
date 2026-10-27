@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공학용 계산기 | 온라인 무료 삼각함수 루트 지수 로그 계산기 (OmniCalc)</title>
+  <meta name="description" content="삼각함수(sin, cos, tan), 라디안/도 변환, 제곱근(루트), 거듭제곱, 로그(log, ln)를 편리하게 지원하는 Desmos급 고성능 무료 공학용 계산기입니다.">
+  <meta name="keywords" content="공학용 계산기, 공학 계산기, 삼각함수 계산기, 루트 계산기, 로그 계산기, 과학 계산기, scientific calculator">
+
+  <link rel="canonical" href="https://omnicalc.pages.dev/scientific.html">
+  <link rel="alternate" hreflang="ko" href="https://omnicalc.pages.dev/scientific.html">
+  <link rel="alternate" hreflang="en" href="https://omnicalc.pages.dev/en/scientific.html">
+
+  <script>(function(){try{var l=localStorage.getItem('omni_lang')||((navigator.language||'').toLowerCase().startsWith('ko')?'ko':'en');document.documentElement.lang=l;}catch(e){}})();</script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/calculator.css">
+  <link rel="stylesheet" href="css/content.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "스마트 공학용 계산기 (OmniCalc)",
+        "url": "https://omnicalc.pages.dev/scientific.html",
+        "applicationCategory": "EducationalApplication"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "공학용 계산기에서 DEG와 RAD의 차이는 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "DEG(도, Degree)는 원을 360도로 나눈 각도 표기법이며, RAD(라디안, Radian)는 호의 길이와 반지름의 비율을 나타내는 수학적 호도법 단위(180도 = π rad)입니다. 고교 및 대학 미적분에서는 주로 RAD를 사용합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "상용로그(log)와 자연로그(ln)의 밑은 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "log는 밑이 10인 상용로그(log10)를 의미하며, ln은 무리수 오일러 상수 e(약 2.71828)를 밑으로 하는 자연로그(natural log)를 의미합니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" title="모두의 계산기 홈" data-i18n-title="logoTitle">
+        <span class="logo-badge">∑</span>
+        <span class="brand-name" data-i18n="brandName">모두의 계산기</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">홈</a></li>
+          <li class="nav-item active"><a href="scientific.html" data-i18n="navScientific">공학용</a></li>
+          <li class="nav-item"><a href="percent.html" data-i18n="navPercent">퍼센트</a></li>
+          <li class="nav-item"><a href="unit-converter.html" data-i18n="navUnit">단위변환</a></li>
+          <li class="nav-item"><a href="fraction.html" data-i18n="navFraction">분수</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="langToggleBtn" class="lang-selector" aria-label="언어 변경">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <span>한국어</span>
+        </button>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="테마 전환" data-i18n-aria="themeToggleLabel">
+          <span id="themeToggleIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+        </button>
+        <button id="mobileNavToggle" class="btn-icon mobile-nav-toggle" aria-label="메뉴 열기" data-i18n-aria="mobileNavLabel">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="container">
+
+      <section class="page-hero">
+        <h1 data-i18n="heroTitleSci">스마트 공학용 계산기</h1>
+        <p data-i18n="heroDescSci">삼각함수, 지수, 로그, 제곱근 등 복잡한 수식을 직관적인 키패드로 계산하세요.</p>
+      </section>
+
+      <!-- Top Ad Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot ad-slot-leaderboard">
+          <span>Google AdSense Header Unit (728 × 90)</span>
+        </div>
+      </div>
+
+      <!-- Interactive Calculator Container -->
+      <div class="calculator-app-card" id="mainCalculator">
+        <div class="calc-top-bar">
+          <div class="mode-toggle-group">
+            <button class="mode-pill active" id="btnModeDeg" type="button">DEG</button>
+            <button class="mode-pill" id="btnModeRad" type="button">RAD</button>
+          </div>
+          <div class="calc-action-btns">
+            <button class="calc-btn-sm" id="btnToggleHistory" type="button">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span data-i18n="historyTitle">기록</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="calc-screen">
+          <button class="copy-badge-btn" id="btnCopyDisplay" type="button" data-i18n="btnCopy">복사</button>
+          <div class="calc-expression-wrap" id="calcExpression">0</div>
+          <div class="calc-result-wrap">
+            <span class="calc-equals-symbol" id="calcEqualsSign">=</span>
+            <div class="calc-result-text" id="calcResult">0</div>
+          </div>
+        </div>
+
+        <div class="calc-keypad">
+          <div class="keypad-row">
+            <button class="k-btn k-fn" data-key="sin" type="button">sin</button>
+            <button class="k-btn k-fn" data-key="cos" type="button">cos</button>
+            <button class="k-btn k-fn" data-key="tan" type="button">tan</button>
+            <button class="k-btn k-fn" data-key="(" type="button">(</button>
+            <button class="k-btn k-fn" data-key=")" type="button">)</button>
+          </div>
+
+          <div class="keypad-row">
+            <button class="k-btn k-fn" data-key="sqrt" type="button">√</button>
+            <button class="k-btn k-fn" data-key="square" type="button">x²</button>
+            <button class="k-btn k-fn" data-key="pow" type="button">xʸ</button>
+            <button class="k-btn k-fn" data-key="log" type="button">log</button>
+            <button class="k-btn k-fn" data-key="ln" type="button">ln</button>
+          </div>
+
+          <div class="keypad-row">
+            <button class="k-btn k-fn" data-key="pi" type="button">π</button>
+            <button class="k-btn k-fn" data-key="e" type="button">e</button>
+            <button class="k-btn k-fn" data-key="%" type="button">%</button>
+            <button class="k-btn k-danger" data-key="backspace" type="button">⌫</button>
+            <button class="k-btn k-danger" data-key="clear" type="button">AC</button>
+          </div>
+
+          <div class="keypad-row">
+            <button class="k-btn k-num" data-key="7" type="button">7</button>
+            <button class="k-btn k-num" data-key="8" type="button">8</button>
+            <button class="k-btn k-num" data-key="9" type="button">9</button>
+            <button class="k-btn k-op" data-key="÷" type="button">÷</button>
+            <button class="k-btn k-fn" data-key="ans" type="button">Ans</button>
+          </div>
+
+          <div class="keypad-row">
+            <button class="k-btn k-num" data-key="4" type="button">4</button>
+            <button class="k-btn k-num" data-key="5" type="button">5</button>
+            <button class="k-btn k-num" data-key="6" type="button">6</button>
+            <button class="k-btn k-op" data-key="×" type="button">×</button>
+            <button class="k-btn k-fn" data-key="asin" type="button">sin⁻¹</button>
+          </div>
+
+          <div class="keypad-row">
+            <button class="k-btn k-num" data-key="1" type="button">1</button>
+            <button class="k-btn k-num" data-key="2" type="button">2</button>
+            <button class="k-btn k-num" data-key="3" type="button">3</button>
+            <button class="k-btn k-op" data-key="-" type="button">−</button>
+            <button class="k-btn k-fn" data-key="acos" type="button">cos⁻¹</button>
+          </div>
+
+          <div class="keypad-row">
+            <button class="k-btn k-num" data-key="0" type="button">0</button>
+            <button class="k-btn k-num" data-key="." type="button">.</button>
+            <button class="k-btn k-equal" data-key="equal" type="button">=</button>
+            <button class="k-btn k-op" data-key="+" type="button">+</button>
+            <button class="k-btn k-fn" data-key="atan" type="button">tan⁻¹</button>
+          </div>
+        </div>
+
+        <div class="history-drawer" id="calcHistoryDrawer">
+          <div class="history-header">
+            <h4 data-i18n="historyTitle">계산 기록</h4>
+            <div>
+              <button class="calc-btn-sm" id="btnClearHistory" type="button" data-i18n="clearHistory">지우기</button>
+              <button class="calc-btn-sm" id="btnCloseHistory" type="button">✕</button>
+            </div>
+          </div>
+          <div class="history-list" id="calcHistoryList"></div>
+        </div>
+      </div>
+
+      <!-- Mid Ad Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot ad-slot-banner">
+          <span>Google AdSense Mid-Content Unit</span>
+        </div>
+      </div>
+
+      <!-- SEO In-depth Scientific Guide (Dual Language) -->
+      <section class="content-guide-section">
+        
+        <!-- Korean Version -->
+        <div class="lang-ko">
+          <div class="content-guide-header">
+            <h2>공학용 계산기 고급 함수 및 공식 가이드</h2>
+            <p>공학 및 자연과학 계산에 필수적인 삼각함수, 로그함수, 지수함수의 수학적 정의와 원리를 상세히 해설합니다.</p>
+          </div>
+
+          <div class="guide-block">
+            <h3>삼각함수와 역삼각함수</h3>
+            <p>삼각함수는 직각삼각형에서 직각이 아닌 한 각의 크기와 변의 비율 관계를 정의한 함수입니다.</p>
+            <div class="formula-card">
+              <div class="formula-card-title">삼각비 기본 공식</div>
+              <div class="formula-math">sin(θ) = 대변/빗변 &nbsp;|&nbsp; cos(θ) = 밑변/빗변 &nbsp;|&nbsp; tan(θ) = 대변/밑변</div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>지수 및 로그함수 성질</h3>
+            <p>지수 연산(Power)과 로그(Logarithm)는 서로 역함수 관계에 있습니다. b^y = x 일 때 log_b(x) = y 로 정의됩니다.</p>
+            <div class="formula-card">
+              <div class="formula-card-title">주요 로그 공식</div>
+              <div class="formula-math">log(A·B) = log(A) + log(B) &nbsp;|&nbsp; log(A/B) = log(A) - log(B) &nbsp;|&nbsp; log(A^k) = k·log(A)</div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>자주 묻는 질문 (FAQ)</h3>
+            <div class="faq-wrap">
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>자연상수 e와 원주율 π의 값은 얼마인가요?</span>
+                  <span class="faq-icon-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                  원주율 π는 약 3.1415926535... 이며, 오일러 상수(자연로그의 밑) e는 약 2.7182818284... 입니다. 본 계산기에서는 고정밀 부동소수점 상수가 내장되어 있어 최고 수준의 정밀도를 보장합니다.
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Ans 버튼의 역할은 무엇인가요?</span>
+                  <span class="faq-icon-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                  Ans(Answer) 버튼은 직전에 계산 완료된 결과값을 현재 수식 입력창에 즉시 불러와 연속 계산을 할 수 있게 해주는 편리한 기능입니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- English Version -->
+        <div class="lang-en">
+          <div class="content-guide-header">
+            <h2>Scientific Calculator Functions & Formulas</h2>
+            <p>Comprehensive mathematical definitions and principles for trigonometry, logarithms, powers, and roots in engineering and scientific calculations.</p>
+          </div>
+
+          <div class="guide-block">
+            <h3>Trigonometric & Inverse Functions</h3>
+            <p>Trigonometric functions define relationships between side lengths and angles in right-angled triangles.</p>
+            <div class="formula-card">
+              <div class="formula-card-title">Fundamental Trigonometric Ratios</div>
+              <div class="formula-math">sin(θ) = Opposite/Hypotenuse &nbsp;|&nbsp; cos(θ) = Adjacent/Hypotenuse &nbsp;|&nbsp; tan(θ) = Opposite/Adjacent</div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>Exponents & Logarithms</h3>
+            <p>Exponentiation and logarithms are inverse mathematical operations. If b^y = x, then log_b(x) = y.</p>
+            <div class="formula-card">
+              <div class="formula-card-title">Core Logarithm Identities</div>
+              <div class="formula-math">log(A·B) = log(A) + log(B) &nbsp;|&nbsp; log(A/B) = log(A) - log(B) &nbsp;|&nbsp; log(A^k) = k·log(A)</div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>Frequently Asked Questions (FAQ)</h3>
+            <div class="faq-wrap">
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>What are the exact values of Euler's Number (e) and Pi (π)?</span>
+                  <span class="faq-icon-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                  Pi (π) is approximately 3.1415926535..., and Euler's number (base of natural log) e is approximately 2.7182818284... OmniCalc incorporates 64-bit IEEE 754 double precision constants for guaranteed numerical accuracy.
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>What is the purpose of the Ans button?</span>
+                  <span class="faq-icon-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                  The Ans (Answer) button inserts the result of your most recent calculation directly into the current expression, enabling quick chaining of multi-step equations.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Bottom Ad Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot ad-slot-leaderboard">
+          <span>Google AdSense Bottom Responsive Unit (728 × 90)</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 0.75rem;">
+            <span class="logo-badge">∑</span>
+            <span class="brand-name" data-i18n="brandName">모두의 계산기</span>
+          </div>
+          <p data-i18n="footerDesc">모두의 계산기(OmniCalc)는 학생, 엔지니어, 직장인 누구나 무료로 쉽고 빠르게 사용할 수 있는 웹 기반 다기능 계산기 플랫폼입니다.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerTools">계산기 도구</h4>
+          <ul class="footer-links">
+            <li><a href="scientific.html" data-i18n="navScientific">공학용 계산기</a></li>
+            <li><a href="percent.html" data-i18n="navPercent">퍼센트 계산기</a></li>
+            <li><a href="unit-converter.html" data-i18n="navUnit">단위 변환기</a></li>
+            <li><a href="fraction.html" data-i18n="navFraction">분수 계산기</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerLegal">신뢰 및 정책</h4>
+          <ul class="footer-links">
+            <li><a href="about.html" data-i18n="footerAbout">서비스 소개</a></li>
+            <li><a href="privacy.html" data-i18n="footerPrivacy">개인정보처리방침</a></li>
+            <li><a href="terms.html" data-i18n="footerTerms">이용약관</a></li>
+            <li><a href="contact.html" data-i18n="footerContact">문의하기</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerAdmin">사이트 관리</h4>
+          <ul class="footer-links">
+            <li><a href="admin.html" class="footer-admin-link">운영자 통계 리더보드</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 OmniCalc. <span data-i18n="footerRights">모든 권리 보유.</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/calculator-core.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

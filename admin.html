@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniCalc 운영자 포털 | 방문자 트래픽 리더보드 & 애드센스 수익 대시보드</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-badge">∑</span>
+        <span class="brand-name">OmniCalc Admin</span>
+      </a>
+
+      <div class="header-actions">
+        <button id="themeToggleBtn" class="btn-icon" aria-label="테마 전환">
+          <span id="themeToggleIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+        </button>
+        <a href="index.html" class="calc-btn-sm" style="text-decoration: none;">돌아가기</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="container admin-wrapper">
+
+      <!-- 1. Password Auth Gate (Clean Lock SVG) -->
+      <section class="admin-auth-card" id="adminAuthSection">
+        <div class="auth-lock-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </div>
+        <h2>운영자 전용 인증</h2>
+        <p>사이트 방문자 통계 리더보드 및 애드센스 예상 수익을 확인하려면 마스터 비밀번호를 입력하세요.</p>
+        <div class="auth-input-group">
+          <input type="password" id="adminPasswordInput" class="auth-input" placeholder="비밀번호 입력" autofocus>
+          <button id="btnAdminLogin" class="btn-primary-action" type="button">대시보드 로그인</button>
+        </div>
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem;">
+          기본 비밀번호: <code>admin1234</code>
+        </p>
+      </section>
+
+      <!-- 2. Authenticated Admin Dashboard -->
+      <section id="adminDashboardSection" style="display: none;">
+        
+        <!-- Header Controls -->
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>사이트 트래픽 및 수익 모니터링 대시보드</h2>
+            <p>구글 검색 유입 현황, 계산기별 인기 순위 리더보드 및 애드센스 예상 수익을 실시간으로 분석합니다.</p>
+          </div>
+
+          <div class="dashboard-actions">
+            <button id="btnSimulateTraffic" class="calc-btn-sm" style="background: var(--accent-primary-light); color: var(--accent-primary); font-weight: 700;">
+              모의 트래픽 (+100 PV) 시뮬레이션
+            </button>
+            <button id="btnAdminLogout" class="calc-btn-sm" style="color: var(--accent-rose);">
+              로그아웃
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI Cards Grid -->
+        <div class="kpi-cards-grid">
+          <div class="kpi-card">
+            <div class="kpi-card-label">
+              <span>오늘 방문자 (UV)</span>
+            </div>
+            <div class="kpi-card-value" id="kpiTodayUV">0</div>
+            <div class="kpi-card-sub">누적 총 <span id="kpiTotalUV" style="margin-left:4px;">0</span>명</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card-label">
+              <span>오늘 페이지뷰 (PV)</span>
+            </div>
+            <div class="kpi-card-value" id="kpiTodayPV">0</div>
+            <div class="kpi-card-sub">누적 총 <span id="kpiTotalPV" style="margin-left:4px;">0</span>회</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card-label">
+              <span>오늘 애드센스 추정 수익</span>
+            </div>
+            <div class="kpi-card-value" id="kpiTodayRev" style="color: var(--accent-green);">$0.00</div>
+            <div class="kpi-card-sub">국내외 복합 평균 RPM 기준</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card-label">
+              <span>이번 달 누적 예상 정산액</span>
+            </div>
+            <div class="kpi-card-value" id="kpiMonthRev" style="color: var(--accent-green);">$0.00</div>
+            <div class="kpi-card-sub">월 30일 환산 추정치</div>
+          </div>
+        </div>
+
+        <!-- 2-Column Section: Leaderboard + Country Distribution -->
+        <div class="dashboard-grid-2col">
+          
+          <!-- Calculators Traffic Leaderboard -->
+          <div class="dash-panel">
+            <div class="dash-panel-header">
+              <div class="dash-panel-title">
+                <span>계산기별 트래픽 순위 리더보드</span>
+              </div>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">실시간 PV 점유율</span>
+            </div>
+
+            <div class="leaderboard-list" id="leaderboardList">
+              <!-- Dynamically populated via admin.js -->
+            </div>
+
+            <div style="margin-top: 1.25rem; padding: 0.75rem 1rem; background-color: var(--bg-tertiary); border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--text-secondary);">
+              <strong>운영 팁:</strong> 트래픽 1~2위 계산기(예: 퍼센트 계산기)의 하단 설명 텍스트와 FAQ를 주기적으로 보강하면 구글 검색 상위 1~3위를 장기 유지할 수 있습니다.
+            </div>
+          </div>
+
+          <!-- Country Distribution & Traffic Source -->
+          <div class="dash-panel">
+            <div class="dash-panel-header">
+              <div class="dash-panel-title">
+                <span>유입 국가 분포</span>
+              </div>
+              <span style="font-size: 0.8rem; color: var(--accent-green); font-weight: 600;">고단가 US 유입 추적</span>
+            </div>
+
+            <div class="country-list" id="countryList">
+              <!-- Dynamically populated via admin.js -->
+            </div>
+
+            <div style="margin-top: 1.25rem; font-size: 0.825rem; color: var(--text-secondary); line-height: 1.5;">
+              • <strong>대한민국 (KR)</strong>: 검색량 최다, 평균 RPM $1.5 ~ $2.5<br>
+              • <strong>미국 (US)</strong>: 고단가 트래픽, 평균 RPM $5.0 ~ $9.0 (수익 극대화 핵심)
+            </div>
+          </div>
+
+        </div>
+
+        <!-- AdSense Revenue Estimator Simulator -->
+        <div class="dash-panel" style="margin-bottom: 2rem;">
+          <div class="dash-panel-header">
+            <div class="dash-panel-title">
+              <span>목표 트래픽 대비 애드센스 수익 시뮬레이터</span>
+            </div>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">실시간 계산</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+            <div>
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span>일일 목표 페이지뷰 (PV)</span>
+                  <span id="simDispPV" style="color: var(--accent-primary); font-family: var(--font-mono); font-weight: 700;">5,000 PV/일</span>
+                </div>
+                <input type="range" id="simSliderPV" class="range-slider" min="1000" max="50000" step="1000" value="5000">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span>목표 1,000회당 수익 (RPM)</span>
+                  <span id="simDispRPM" style="color: var(--accent-primary); font-family: var(--font-mono); font-weight: 700;">$2.50</span>
+                </div>
+                <input type="range" id="simSliderRPM" class="range-slider" min="1.0" max="10.0" step="0.25" value="2.50">
+              </div>
+            </div>
+
+            <div class="calc-revenue-results" style="margin: 0; padding: 0; border: none;">
+              <div class="rev-res-card">
+                <div class="rev-res-label">일일 예상 광고 수익</div>
+                <div class="rev-res-val" id="simResDaily" style="font-size: 1.25rem;">$12.5 (~16,800원)</div>
+              </div>
+              <div class="rev-res-card">
+                <div class="rev-res-label">월간 예상 광고 수익 (30일)</div>
+                <div class="rev-res-val" id="simResMonthly" style="font-size: 1.25rem;">$375 (~506,000원)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Activity Log Terminal -->
+        <div class="dash-panel">
+          <div class="dash-panel-header">
+            <div class="dash-panel-title">
+              <span>최근 방문 및 계산 활동 로그</span>
+            </div>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">실시간 감지</span>
+          </div>
+
+          <div id="recentLogsList">
+            <!-- Dynamically populated via admin.js -->
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <script src="js/tracker.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

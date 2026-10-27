@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문의하기 (Contact Us) | 모두의 계산기 (OmniCalc)</title>
+  <meta name="description" content="모두의 계산기(OmniCalc) 기능 건의, 오류 제보, 제휴 및 기타 문의를 보내실 수 있습니다.">
+
+  <link rel="canonical" href="https://omnicalc.pages.dev/contact.html">
+  <script>(function(){try{var l=localStorage.getItem('omni_lang')||((navigator.language||'').toLowerCase().startsWith('ko')?'ko':'en');document.documentElement.lang=l;}catch(e){}})();</script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/content.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-badge">∑</span>
+        <span class="brand-name" data-i18n="brandName">모두의 계산기</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">홈</a></li>
+          <li class="nav-item"><a href="scientific.html" data-i18n="navScientific">공학용</a></li>
+          <li class="nav-item"><a href="percent.html" data-i18n="navPercent">퍼센트</a></li>
+          <li class="nav-item"><a href="unit-converter.html" data-i18n="navUnit">단위변환</a></li>
+          <li class="nav-item"><a href="fraction.html" data-i18n="navFraction">분수</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="langToggleBtn" class="lang-selector" aria-label="언어 변경">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <span>한국어</span>
+        </button>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="테마 전환" data-i18n-aria="themeToggleLabel">
+          <span id="themeToggleIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+        </button>
+        <button id="mobileNavToggle" class="btn-icon mobile-nav-toggle" aria-label="메뉴 열기" data-i18n-aria="mobileNavLabel">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="container">
+      <!-- Korean Hero -->
+      <section class="page-hero lang-ko">
+        <h1>문의 및 의견 보내기 (Contact Us)</h1>
+        <p>서비스 이용 중 발견된 버그나 새로운 계산기 추가 요청을 언제든지 알려주세요.</p>
+      </section>
+
+      <!-- English Hero -->
+      <section class="page-hero lang-en">
+        <h1>Contact & Feedback</h1>
+        <p>Report calculation bugs, suggest new calculator features, or explore partnerships.</p>
+      </section>
+
+      <section class="content-guide-section" style="max-width: 600px; margin-top: 1rem;">
+        <form id="contactForm" onsubmit="event.preventDefault(); const msg = (window.i18n && window.i18n.getText('contactSuccess')) || 'Thank you! Your message has been sent successfully.'; window.showToast(msg); this.reset();">
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div>
+              <label style="display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.4rem;" data-i18n="contactEmail">이메일 주소</label>
+              <input type="email" class="c-input" required placeholder="example@email.com" style="width: 100%;">
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.4rem;" data-i18n="contactSubject">문의 유형</label>
+              <select class="c-select" style="width: 100%;">
+                <option data-i18n="contactSubjectBug">수학 연산 오류 / 버그 제보</option>
+                <option data-i18n="contactSubjectGeneral">새로운 계산기 기능 제안</option>
+                <option data-i18n="contactSubjectPartnership">광고 및 제휴 제안</option>
+                <option data-i18n="contactSubjectEtc">기타 일반 피드백</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.4rem;" data-i18n="contactMessage">문의 내용</label>
+              <textarea class="c-input" rows="5" required placeholder="구체적인 내용을 입력해 주세요." style="width: 100%; height: auto; padding: 0.85rem; font-family: inherit;"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary-action" style="margin-top: 0.5rem; height: 50px;" data-i18n="contactSubmit">
+              문의 발송하기
+            </button>
+          </div>
+        </form>
+
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); font-size: 0.875rem; color: var(--text-muted); text-align: center;">
+          <span class="lang-ko">공식 운영팀 이메일: <strong>support@omnicalc.pages.dev</strong></span>
+          <span class="lang-en">Official Inquiries: <strong>support@omnicalc.pages.dev</strong></span>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 0.75rem;">
+            <span class="logo-badge">∑</span>
+            <span class="brand-name" data-i18n="brandName">모두의 계산기</span>
+          </div>
+          <p data-i18n="footerDesc">모두의 계산기(OmniCalc)는 학생, 엔지니어, 직장인 누구나 무료로 쉽고 빠르게 사용할 수 있는 웹 기반 다기능 계산기 플랫폼입니다.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerTools">계산기 도구</h4>
+          <ul class="footer-links">
+            <li><a href="scientific.html" data-i18n="navScientific">공학용 계산기</a></li>
+            <li><a href="percent.html" data-i18n="navPercent">퍼센트 계산기</a></li>
+            <li><a href="unit-converter.html" data-i18n="navUnit">단위 변환기</a></li>
+            <li><a href="fraction.html" data-i18n="navFraction">분수 계산기</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerLegal">신뢰 및 정책</h4>
+          <ul class="footer-links">
+            <li><a href="about.html" data-i18n="footerAbout">서비스 소개</a></li>
+            <li><a href="privacy.html" data-i18n="footerPrivacy">개인정보처리방침</a></li>
+            <li><a href="terms.html" data-i18n="footerTerms">이용약관</a></li>
+            <li><a href="contact.html" data-i18n="footerContact">문의하기</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerAdmin">사이트 관리</h4>
+          <ul class="footer-links">
+            <li><a href="admin.html" class="footer-admin-link">운영자 통계 리더보드</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 OmniCalc. <span data-i18n="footerRights">모든 권리 보유.</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모두의 계산기 | 초고속 무료 스마트 온라인 계산기 (OmniCalc)</title>
+  <meta name="description" content="사칙연산부터 공학 수식, 퍼센트, 아파트 평수 단위 변환, 분수 계산까지 빠르고 정확하게 지원하는 무료 스마트 웹 계산기입니다.">
+  <meta name="keywords" content="온라인 계산기, 공학용 계산기, 퍼센트 계산기, 단위 변환기, 평수 계산기, 분수 계산기, web calculator">
+  
+  <link rel="canonical" href="https://omnicalc.pages.dev/">
+  <link rel="alternate" hreflang="ko" href="https://omnicalc.pages.dev/">
+  <link rel="alternate" hreflang="en" href="https://omnicalc.pages.dev/en">
+  <link rel="alternate" hreflang="x-default" href="https://omnicalc.pages.dev/">
+
+  <meta property="og:title" content="모두의 계산기 (OmniCalc) - 초고속 스마트 계산기">
+  <meta property="og:description" content="사칙연산부터 복잡한 공학 수식, 퍼센트, 단위 변환까지 웹에서 즉시 해결하세요.">
+  <meta property="og:type" content="website">
+
+  <script>(function(){try{var l=localStorage.getItem('omni_lang')||((navigator.language||'').toLowerCase().startsWith('ko')?'ko':'en');document.documentElement.lang=l;}catch(e){}})();</script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/calculator.css">
+  <link rel="stylesheet" href="css/content.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "모두의 계산기 (OmniCalc)",
+        "url": "https://omnicalc.pages.dev/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "KRW"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "모두의 계산기는 무료인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "네, 모두의 계산기의 모든 도구(공학용, 퍼센트, 단위 변환, 분수 계산)는 별도의 가입이나 설치 없이 100% 무료로 영구 이용하실 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "키보드로 수식을 직접 입력할 수 있나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "네! 화면의 가상 키패드뿐만 아니라 PC 키보드의 숫자패드, +, -, *, /, 엔터(=), 백스페이스 단축키를 완벽하게 지원합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "공학용 계산기의 삼각함수 계산 시 각도 단위는 어떻게 변경하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "계산기 상단의 DEG(도) / RAD(라디안) 토글 버튼을 클릭하시면 즉시 각도 단위가 전환되며 결과가 실시간으로 재계산됩니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" title="모두의 계산기 홈" data-i18n-title="logoTitle">
+        <span class="logo-badge">∑</span>
+        <span class="brand-name" data-i18n="brandName">모두의 계산기</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item active"><a href="index.html" data-i18n="navHome">홈</a></li>
+          <li class="nav-item"><a href="scientific.html" data-i18n="navScientific">공학용</a></li>
+          <li class="nav-item"><a href="percent.html" data-i18n="navPercent">퍼센트</a></li>
+          <li class="nav-item"><a href="unit-converter.html" data-i18n="navUnit">단위변환</a></li>
+          <li class="nav-item"><a href="fraction.html" data-i18n="navFraction">분수</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Clean Language Switcher with SVG -->
+        <button id="langToggleBtn" class="lang-selector" aria-label="언어 변경">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <span>한국어</span>
+        </button>
+
+        <!-- Clean Dark/Light Theme Switcher with SVG -->
+        <button id="themeToggleBtn" class="btn-icon" aria-label="테마 전환" data-i18n-aria="themeToggleLabel">
+          <span id="themeToggleIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+        </button>
+
+        <button id="mobileNavToggle" class="btn-icon mobile-nav-toggle" aria-label="메뉴 열기" data-i18n-aria="mobileNavLabel">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    <div class="container">
+
+      <!-- Hero Header -->
+      <section class="page-hero">
+        <h1 data-i18n="heroTitleHome">정확하고 빠른 무료 스마트 계산기</h1>
+        <p data-i18n="heroDescHome">사칙연산부터 공학 수식, 퍼센트, 단위 변환까지 브라우저에서 즉시 해결하세요.</p>
+      </section>
+
+      <!-- Top AdSlot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot ad-slot-leaderboard">
+          <span>Google AdSense Advertisement Slot (728 × 90)</span>
+        </div>
+      </div>
+
+      <!-- Quick Navigation Grid (Modern Minimalist SVGs) -->
+      <div class="tools-nav-grid">
+        <a href="scientific.html" class="tool-card active">
+          <div class="tool-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c2-6 4-14 8-14 3 0 4 3 4 6 0 4-2 8-5 8-2 0-3-1-3-3 0-4 3-8 8-8"></path><line x1="3" y1="11" x2="13" y2="11"></line></svg>
+          </div>
+          <div class="tool-info">
+            <h3 data-i18n="toolSciTitle">공학용 계산기</h3>
+            <p data-i18n="toolSciDesc">삼각함수, 로그, 제곱근, 거듭제곱</p>
+          </div>
+        </a>
+
+        <a href="percent.html" class="tool-card">
+          <div class="tool-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>
+          </div>
+          <div class="tool-info">
+            <h3 data-i18n="toolPercentTitle">퍼센트 계산기</h3>
+            <p data-i18n="toolPercentDesc">할인율, 증감률, 백분율 4대 연산</p>
+          </div>
+        </a>
+
+        <a href="unit-converter.html" class="tool-card">
+          <div class="tool-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 5h18"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 19H3"></path></svg>
+          </div>
+          <div class="tool-info">
+            <h3 data-i18n="toolUnitTitle">단위 변환기</h3>
+            <p data-i18n="toolUnitDesc">아파트 평수, 길이, 무게, 면적</p>
+          </div>
+        </a>
+
+        <a href="fraction.html" class="tool-card">
+          <div class="tool-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="2"></circle><line x1="5" y1="12" x2="19" y2="12"></line><circle cx="12" cy="18" r="2"></circle></svg>
+          </div>
+          <div class="tool-info">
+            <h3 data-i18n="toolFractionTitle">분수 계산기</h3>
+            <p data-i18n="toolFractionDesc">분수 사칙연산, 기약분수 자동 약분</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Main Interactive Calculator App -->
+      <div class="calculator-app-card" id="mainCalculator">
+        <!-- Top Toolbar -->
+        <div class="calc-top-bar">
+          <div class="mode-toggle-group">
+            <button class="mode-pill active" id="btnModeDeg" type="button">DEG</button>
+            <button class="mode-pill" id="btnModeRad" type="button">RAD</button>
+          </div>
+          <div class="calc-action-btns">
+            <button class="calc-btn-sm" id="btnToggleHistory" type="button">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span data-i18n="historyTitle">기록</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Calculator Display Screen -->
+        <div class="calc-screen">
+          <button class="copy-badge-btn" id="btnCopyDisplay" type="button" data-i18n="btnCopy">복사</button>
+          <div class="calc-expression-wrap" id="calcExpression">0</div>
+          <div class="calc-result-wrap">
+            <span class="calc-equals-symbol" id="calcEqualsSign">=</span>
+            <div class="calc-result-text" id="calcResult">0</div>
+          </div>
+        </div>
+
+        <!-- Keypad -->
+        <div class="calc-keypad">
+          <div class="keypad-row">
+            <button class="k-btn k-fn" data-key="sin" type="button">sin</button>
+            <button class="k-btn k-fn" data-key="cos" type="button">cos</button>
+            <button class="k-btn k-fn" data-key="tan" type="button">tan</button>
+            <button class="k-btn k-fn" data-key="(" type="button">(</button>
+            <button class="k-btn k-fn" data-key=")" type="button">)</button>
+          </div>
+
+          <div class="keypad-row">
+            <button class="k-btn k-fn" data-key="sqrt" type="button">√</button>
+            <button class="k-btn k-fn" data-key="square" type="button">x²</button>
+            <button class="k-btn k-fn" data-key="pow" type="button">xʸ</button>
+            <button class="k-btn k-fn" data-key="log" type="button">log</button>
+            <button class="k-btn k-fn" data-key="ln" type="button">ln</button>
+          </div>
+
+          <div class="keypad-row">
+            <button class="k-btn k-fn" data-key="pi" type="button">π</button>
+            <button class="k-btn k-fn" data-key="e" type="button">e</button>
+            <button class="k-btn k-fn" data-key="%" type="button">%</button>
+            <button class="k-btn k-danger" data-key="backspace" type="button">⌫</button>
+            <button class="k-btn k-danger" data-key="clear" type="button">AC</button>
+          </div>
+
+          <div class="keypad-row">
+            <button class="k-btn k-num" data-key="7" type="button">7</button>
+            <button class="k-btn k-num" data-key="8" type="button">8</button>
+            <button class="k-btn k-num" data-key="9" type="button">9</button>
+            <button class="k-btn k-op" data-key="÷" type="button">÷</button>
+            <button class="k-btn k-fn" data-key="ans" type="button">Ans</button>
+          </div>
+
+          <div class="keypad-row">
+            <button class="k-btn k-num" data-key="4" type="button">4</button>
+            <button class="k-btn k-num" data-key="5" type="button">5</button>
+            <button class="k-btn k-num" data-key="6" type="button">6</button>
+            <button class="k-btn k-op" data-key="×" type="button">×</button>
+            <button class="k-btn k-fn" data-key="asin" type="button">sin⁻¹</button>
+          </div>
+
+          <div class="keypad-row">
+            <button class="k-btn k-num" data-key="1" type="button">1</button>
+            <button class="k-btn k-num" data-key="2" type="button">2</button>
+            <button class="k-btn k-num" data-key="3" type="button">3</button>
+            <button class="k-btn k-op" data-key="-" type="button">−</button>
+            <button class="k-btn k-fn" data-key="acos" type="button">cos⁻¹</button>
+          </div>
+
+          <div class="keypad-row">
+            <button class="k-btn k-num" data-key="0" type="button">0</button>
+            <button class="k-btn k-num" data-key="." type="button">.</button>
+            <button class="k-btn k-equal" data-key="equal" type="button">=</button>
+            <button class="k-btn k-op" data-key="+" type="button">+</button>
+            <button class="k-btn k-fn" data-key="atan" type="button">tan⁻¹</button>
+          </div>
+        </div>
+
+        <!-- History Drawer -->
+        <div class="history-drawer" id="calcHistoryDrawer">
+          <div class="history-header">
+            <h4 data-i18n="historyTitle">계산 기록</h4>
+            <div>
+              <button class="calc-btn-sm" id="btnClearHistory" type="button" data-i18n="clearHistory">지우기</button>
+              <button class="calc-btn-sm" id="btnCloseHistory" type="button">✕</button>
+            </div>
+          </div>
+          <div class="history-list" id="calcHistoryList"></div>
+        </div>
+      </div>
+
+      <!-- Mid Ad Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot ad-slot-banner">
+          <span>Google AdSense Native In-Feed Banner (Responsive)</span>
+        </div>
+      </div>
+
+      <!-- In-Depth SEO Content Guide (Dual Language Switching) -->
+      <section class="content-guide-section">
+        
+        <!-- ================= KOREAN VERSION ================= -->
+        <div class="lang-ko">
+          <div class="content-guide-header">
+            <h2>온라인 계산기 활용 가이드 및 기능 설명</h2>
+            <p>모두의 계산기(OmniCalc)는 일상생활 사칙연산부터 복잡한 공학·수학 수식까지 누구나 웹 브라우저에서 편리하게 계산할 수 있도록 제작된 차세대 무료 계산기입니다.</p>
+          </div>
+
+          <div class="guide-block">
+            <h3>빠른 계산을 위한 키보드 단축키 안내</h3>
+            <p>모바일에서는 터치 키패드로, 데스크톱 PC에서는 키보드 단축키를 활용하여 2배 이상 빠른 연산이 가능합니다.</p>
+            <div class="callout-box callout-info">
+              <div class="callout-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              </div>
+              <div>
+                <strong>지원 단축키:</strong> 숫자 키(0~9), 덧셈(+), 뺄셈(-), 곱셈(*), 나눗셈(/), 괄호(), 엔터 키(=), 백스페이스(⌫), Esc(전체 지우기 AC)
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>공학용 계산기 주요 기능 및 각도 모드</h3>
+            <p>삼각함수(sin, cos, tan)를 연산할 때는 각도 단위 설정이 매우 중요합니다. 본 계산기는 상단의 모드 토글을 통해 <strong>DEG(도, Degree)</strong>와 <strong>RAD(라디안, Radian)</strong>를 원클릭으로 전환할 수 있습니다.</p>
+            
+            <div class="formula-card">
+              <div class="formula-card-title">각도 변환 핵심 공식</div>
+              <div class="formula-math">Radian = Degree × (π / 180) &nbsp;|&nbsp; Degree = Radian × (180 / π)</div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>실생활 계산 예시</h3>
+            <div class="examples-grid">
+              <div class="example-card">
+                <span class="example-badge">공학 / 과학</span>
+                <div class="example-title">피타고라스 정리 연산</div>
+                <div class="example-body">직각삼각형의 빗변 길이 계산: √(3² + 4²) = 5</div>
+              </div>
+              <div class="example-card">
+                <span class="example-badge">금융 / 경제</span>
+                <div class="example-title">복리이자 거듭제곱 계산</div>
+                <div class="example-body">원금 1,000만원의 연 5% 3년 복리: 1000 × (1.05)^3 = 1,157.6만원</div>
+              </div>
+              <div class="example-card">
+                <span class="example-badge">일상 / 쇼핑</span>
+                <div class="example-title">할인율 복합 계산</div>
+                <div class="example-body">50,000원 상품의 20% 세일가: 50000 × (1 - 0.20) = 40,000원</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Accordions (KO) -->
+          <div class="guide-block">
+            <h3>자주 묻는 질문 (FAQ)</h3>
+            <div class="faq-wrap">
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>모두의 계산기는 스마트폰에서도 편리하게 사용할 수 있나요?</span>
+                  <span class="faq-icon-arrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
+                </button>
+                <div class="faq-answer">
+                  네, 반응형 모바일 터치 최적화 레이아웃이 적용되어 있어 스마트폰과 태블릿 화면에서도 엄지손가락으로 편안하게 모든 키패드를 누를 수 있습니다.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>계산했던 수식 기록은 어디에 저장되나요?</span>
+                  <span class="faq-icon-arrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
+                </button>
+                <div class="faq-answer">
+                  모든 계산 기록은 사용자의 웹 브라우저 내부 로컬 저장소(localStorage)에 안전하게 보관됩니다. 외부 서버로 개인 데이터가 전송되지 않아 안심하고 사용하실 수 있습니다.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>수식 계산 결과는 어떻게 클립보드에 복사하나요?</span>
+                  <span class="faq-icon-arrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
+                </button>
+                <div class="faq-answer">
+                  계산기 화면 우측 상단의 '복사' 버튼을 누르거나, 표시된 결과 숫자를 클릭하시면 즉시 클립보드에 복사되어 엑셀이나 메모장에 바로 붙여넣기 하실 수 있습니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= ENGLISH VERSION ================= -->
+        <div class="lang-en">
+          <div class="content-guide-header">
+            <h2>Online Calculator Guide & Practical Tips</h2>
+            <p>OmniCalc is a next-generation free web calculator designed to handle everything from basic arithmetic to advanced scientific formulas directly inside your modern browser.</p>
+          </div>
+
+          <div class="guide-block">
+            <h3>Fast Calculation via Keyboard Shortcuts</h3>
+            <p>On mobile devices, use the touch-optimized virtual keypad; on desktop PCs, speed up your workflow with standard keyboard shortcuts.</p>
+            <div class="callout-box callout-info">
+              <div class="callout-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              </div>
+              <div>
+                <strong>Supported Shortcuts:</strong> Number keys (0-9), Add (+), Subtract (-), Multiply (*), Divide (/), Parentheses (), Enter (=), Backspace (⌫), Esc (Clear All AC)
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>Scientific Functions & Angle Mode Settings</h3>
+            <p>When calculating trigonometric functions (sin, cos, tan), angle units are critical. OmniCalc lets you toggle between <strong>DEG (Degrees)</strong> and <strong>RAD (Radians)</strong> with a single click.</p>
+            
+            <div class="formula-card">
+              <div class="formula-card-title">Angle Conversion Formula</div>
+              <div class="formula-math">Radian = Degree × (π / 180) &nbsp;|&nbsp; Degree = Radian × (180 / π)</div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>Everyday Calculation Scenarios</h3>
+            <div class="examples-grid">
+              <div class="example-card">
+                <span class="example-badge">Science & Math</span>
+                <div class="example-title">Pythagorean Theorem</div>
+                <div class="example-body">Hypotenuse calculation: √(3² + 4²) = 5</div>
+              </div>
+              <div class="example-card">
+                <span class="example-badge">Finance & Banking</span>
+                <div class="example-title">Compound Interest</div>
+                <div class="example-body">$10,000 principal at 5% for 3 years: 10000 × (1.05)^3 = $11,576.25</div>
+              </div>
+              <div class="example-card">
+                <span class="example-badge">Retail & Shopping</span>
+                <div class="example-title">Discount Price</div>
+                <div class="example-body">$50.00 item with 20% discount: 50 × (1 - 0.20) = $40.00</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Accordions (EN) -->
+          <div class="guide-block">
+            <h3>Frequently Asked Questions (FAQ)</h3>
+            <div class="faq-wrap">
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Is OmniCalc mobile and smartphone friendly?</span>
+                  <span class="faq-icon-arrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
+                </button>
+                <div class="faq-answer">
+                  Yes! With touch-responsive layouts and adaptive sizing, you can comfortably tap keys with one thumb on any mobile phone or tablet screen.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Where is my calculation history stored?</span>
+                  <span class="faq-icon-arrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
+                </button>
+                <div class="faq-answer">
+                  All calculation histories are stored locally and safely inside your browser's localStorage. No personal calculation data is ever sent to external servers.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>How do I copy calculation results to the clipboard?</span>
+                  <span class="faq-icon-arrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
+                </button>
+                <div class="faq-answer">
+                  Simply click the 'Copy' button in the upper-right corner of the calculator display, or click the result number directly to copy it instantly.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Bottom Ad Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot ad-slot-leaderboard">
+          <span>Google AdSense Bottom Responsive Ad (728 × 90)</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 0.75rem;">
+            <span class="logo-badge">∑</span>
+            <span class="brand-name" data-i18n="brandName">모두의 계산기</span>
+          </div>
+          <p data-i18n="footerDesc">모두의 계산기(OmniCalc)는 학생, 엔지니어, 직장인 누구나 무료로 쉽고 빠르게 사용할 수 있는 웹 기반 다기능 계산기 플랫폼입니다.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerTools">계산기 도구</h4>
+          <ul class="footer-links">
+            <li><a href="scientific.html" data-i18n="navScientific">공학용 계산기</a></li>
+            <li><a href="percent.html" data-i18n="navPercent">퍼센트 계산기</a></li>
+            <li><a href="unit-converter.html" data-i18n="navUnit">단위 변환기</a></li>
+            <li><a href="fraction.html" data-i18n="navFraction">분수 계산기</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerLegal">신뢰 및 정책</h4>
+          <ul class="footer-links">
+            <li><a href="about.html" data-i18n="footerAbout">서비스 소개</a></li>
+            <li><a href="privacy.html" data-i18n="footerPrivacy">개인정보처리방침</a></li>
+            <li><a href="terms.html" data-i18n="footerTerms">이용약관</a></li>
+            <li><a href="contact.html" data-i18n="footerContact">문의하기</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerAdmin">사이트 관리</h4>
+          <ul class="footer-links">
+            <li><a href="admin.html" class="footer-admin-link">운영자 통계 리더보드</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 OmniCalc. <span data-i18n="footerRights">모든 권리 보유.</span></div>
+        <div>Fast, Free, Ad-Supported Web Utility</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/calculator-core.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
