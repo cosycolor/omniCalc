@@ -44,9 +44,6 @@
           <input type="password" id="adminPasswordInput" class="auth-input" placeholder="비밀번호 입력" autofocus>
           <button id="btnAdminLogin" class="btn-primary-action" type="button">대시보드 로그인</button>
         </div>
-        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem;">
-          기본 비밀번호: <code>admin1234</code>
-        </p>
       </section>
 
       <!-- 2. Authenticated Admin Dashboard -->
@@ -60,6 +57,9 @@
           </div>
 
           <div class="dashboard-actions">
+            <button id="btnChangePassword" class="calc-btn-sm" style="border: 1px solid var(--border-color);">
+              비밀번호 변경
+            </button>
             <button id="btnSimulateTraffic" class="calc-btn-sm" style="background: var(--accent-primary-light); color: var(--accent-primary); font-weight: 700;">
               모의 트래픽 (+100 PV) 시뮬레이션
             </button>

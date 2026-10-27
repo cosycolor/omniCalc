@@ -203,6 +203,27 @@ class AdminPortal {
     }
   }
 
+  changePassword() {
+    const newPass = prompt('새로운 관리자 마스터 비밀번호를 입력하세요:');
+    if (newPass === null) return;
+    if (newPass.trim().length < 4) {
+      alert('비밀번호는 최소 4자 이상 입력해주세요.');
+      return;
+    }
+    const confirmPass = prompt('확인을 위해 새 비밀번호를 다시 입력하세요:');
+    if (newPass !== confirmPass) {
+      alert('비밀번호 확인이 일치하지 않습니다.');
+      return;
+    }
+    this.masterPass = newPass.trim();
+    localStorage.setItem('omni_admin_password', this.masterPass);
+    if (window.showToast) {
+      window.showToast('관리자 비밀번호가 성공적으로 변경되었습니다.');
+    } else {
+      alert('관리자 비밀번호가 성공적으로 변경되었습니다.');
+    }
+  }
+
   init() {
     const authBtn = document.getElementById('btnAdminLogin');
     const passInput = document.getElementById('adminPasswordInput');
@@ -213,7 +234,7 @@ class AdminPortal {
         if (!ok) {
           passInput.style.borderColor = 'var(--accent-rose)';
           passInput.value = '';
-          alert('비밀번호가 올바르지 않습니다. (기본 비밀번호: admin1234)');
+          alert('비밀번호가 올바르지 않습니다.');
         }
       };
 
@@ -225,6 +246,7 @@ class AdminPortal {
 
     document.getElementById('btnAdminLogout')?.addEventListener('click', () => this.logout());
     document.getElementById('btnSimulateTraffic')?.addEventListener('click', () => this.simulateTrafficBurst());
+    document.getElementById('btnChangePassword')?.addEventListener('click', () => this.changePassword());
 
     this.renderView();
     this.setupRevenueSimulator();
