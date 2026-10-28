@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percentage Calculator | Real-Time Discount & Ratio Tool (OmniCalc)</title>
+  <meta name="description" content="Free online percentage calculator for retail shopping discounts, profit/loss rates, percentage changes, and real-time proportion calculations.">
+  <meta name="keywords" content="percentage calculator, discount calculator, percent off, percent change, profit margin calculator, ratio calculator">
+
+  <link rel="canonical" href="https://myomnicalc.com/en/percent.html">
+  <link rel="alternate" hreflang="ko" href="https://myomnicalc.com/percent.html">
+  <link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/percent.html">
+
+  <!-- Favicon / App Icons -->
+  <link rel="icon" type="image/svg+xml" href="https://myomnicalc.com/favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://myomnicalc.com/favicon-192x192.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://myomnicalc.com/favicon-48x48.png">
+  <link rel="apple-touch-icon" href="https://myomnicalc.com/favicon-192x192.png">
+  <link rel="shortcut icon" href="https://myomnicalc.com/favicon.ico">
+
+  <!-- Open Graph / Kakao / Search Engine Snippet -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://myomnicalc.com/en/percent.html">
+  <meta property="og:title" content="Percentage Calculator | Real-Time Discount & Ratio Tool (OmniCalc)">
+  <meta property="og:description" content="Calculate shopping discounts, profit yields, and percentage changes instantly with accurate real-time formulas.">
+  <meta property="og:image" content="https://myomnicalc.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675">
+  <meta property="og:image:alt" content="퍼센트 계산기 (OmniCalc)">
+
+  <!-- Twitter Card & Search Engine Thumbnail -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Percentage Calculator | Real-Time Discount & Ratio Tool (OmniCalc)">
+  <meta name="twitter:description" content="Calculate shopping discounts, profit yields, and percentage changes instantly with accurate real-time formulas.">
+  <meta name="twitter:image" content="https://myomnicalc.com/og-image.jpg">
+  <meta name="thumbnail" content="https://myomnicalc.com/og-image.jpg">
+
+  <script>(function(){try{localStorage.setItem('omni_lang','en');document.documentElement.lang='en';}catch(e){}})();</script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/calculator.css">
+  <link rel="stylesheet" href="../css/content.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "퍼센트 계산기 (OmniCalc)",
+        "url": "https://myomnicalc.com/percent.html",
+        "applicationCategory": "BusinessApplication"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "할인율 계산은 어떻게 하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "정가에서 할인율(%)을 뺀 비율을 곱합니다. 예를 들어 50,000원짜리 옷을 30% 할인한다면, 50,000 × (1 - 0.3) = 35,000원이 최종 결제 금액이 됩니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "수익률 또는 가격 증감률 계산 공식은 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "((변경 후 금액 - 변경 전 금액) / 변경 전 금액) × 100 공식으로 계산합니다. 결과가 양수면 증가율(수익), 음수면 감소율(손실)을 의미합니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" title="모두의 계산기 홈" data-i18n-title="logoTitle">
+        <span class="logo-badge">∑</span>
+        <span class="brand-name" data-i18n="brandName">OmniCalc</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
+          <li class="nav-item"><a href="scientific.html" data-i18n="navScientific">Scientific</a></li>
+          <li class="nav-item active"><a href="percent.html" data-i18n="navPercent">Percent</a></li>
+          <li class="nav-item"><a href="unit-converter.html" data-i18n="navUnit">Unit Converter</a></li>
+          <li class="nav-item"><a href="fraction.html" data-i18n="navFraction">Fraction</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="langToggleBtn" class="lang-selector" aria-label="언어 변경">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <span>한국어</span>
+        </button>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="테마 전환" data-i18n-aria="themeToggleLabel">
+          <span id="themeToggleIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+        </button>
+        <button id="mobileNavToggle" class="btn-icon mobile-nav-toggle" aria-label="메뉴 열기" data-i18n-aria="mobileNavLabel">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="container">
+
+      <!-- Hero Section -->
+      <section class="page-hero">
+        <h1 data-i18n="heroTitlePercent">Percent & Discount Calculator</h1>
+        <p data-i18n="heroDescPercent">Calculate shopping discounts, profit rates, and percentage changes in real-time.</p>
+      </section>
+
+      <!-- Top Ad Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot ad-slot-leaderboard">
+          <span>Google AdSense Header Unit (728 × 90)</span>
+        </div>
+      </div>
+
+      <!-- Specialized 4-in-1 Percent Calculator (Full i18n Applied) -->
+      <div class="specialized-card">
+        <div class="spec-calc-grid">
+          
+          <!-- Type 1: A의 B%는 얼마인가? -->
+          <div class="calc-box-item">
+            <div class="calc-box-title">
+              <span style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; background:var(--accent-primary-light); color:var(--accent-primary); border-radius:6px; font-size:0.8rem; font-weight:800;">1</span>
+              <span data-i18n="p1Title">Calculate Percentage of Value</span>
+            </div>
+            <div class="calc-input-row">
+              <input type="number" id="p1_a" class="c-input" data-i18n="p1PlaceholderA" placeholder="전체값 A" value="100000">
+              <span data-i18n="p1LabelOf">of</span>
+              <input type="number" id="p1_b" class="c-input" data-i18n="p1PlaceholderB" placeholder="비율 B" value="15">
+              <span data-i18n="p1LabelIs">% is?</span>
+            </div>
+            <div class="calc-output-box">
+              <div class="calc-output-label" data-i18n="p1Result">Result</div>
+              <div class="calc-output-value" id="p1_res">15,000</div>
+            </div>
+          </div>
+
+          <!-- Type 2: A는 B의 몇 %인가? -->
+          <div class="calc-box-item">
+            <div class="calc-box-title">
+              <span style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; background:var(--accent-primary-light); color:var(--accent-primary); border-radius:6px; font-size:0.8rem; font-weight:800;">2</span>
+              <span data-i18n="p2Title">What % is Value A of Value B?</span>
+            </div>
+            <div class="calc-input-row">
+              <input type="number" id="p2_a" class="c-input" data-i18n="p2PlaceholderA" placeholder="부분값 A" value="25000">
+              <span data-i18n="p2LabelOf">is what % of</span>
+              <input type="number" id="p2_b" class="c-input" data-i18n="p2PlaceholderB" placeholder="기준값 B" value="100000">
+              <span data-i18n="p2LabelIs">?</span>
+            </div>
+            <div class="calc-output-box">
+              <div class="calc-output-label" data-i18n="p2Result">Rate Result</div>
+              <div class="calc-output-value" id="p2_res">25%</div>
+            </div>
+          </div>
+
+          <!-- Type 3: A에서 B로 변동 시 증감률은? -->
+          <div class="calc-box-item">
+            <div class="calc-box-title">
+              <span style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; background:var(--accent-primary-light); color:var(--accent-primary); border-radius:6px; font-size:0.8rem; font-weight:800;">3</span>
+              <span data-i18n="p3Title">Percentage Increase / Decrease Rate</span>
+            </div>
+            <div class="calc-input-row">
+              <input type="number" id="p3_a" class="c-input" data-i18n="p3PlaceholderA" placeholder="이전값 A" value="50000">
+              <span data-i18n="p3LabelFrom">from</span>
+              <input type="number" id="p3_b" class="c-input" data-i18n="p3PlaceholderB" placeholder="이후값 B" value="65000">
+              <span data-i18n="p3LabelTo">to</span>
+            </div>
+            <div class="calc-output-box">
+              <div class="calc-output-label" data-i18n="p3Result">Rate Change</div>
+              <div class="calc-output-value" id="p3_res">+30%</div>
+            </div>
+          </div>
+
+          <!-- Type 4: 할인율 및 증감 후 최종값 계산 -->
+          <div class="calc-box-item">
+            <div class="calc-box-title">
+              <span style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; background:var(--accent-primary-light); color:var(--accent-primary); border-radius:6px; font-size:0.8rem; font-weight:800;">4</span>
+              <span data-i18n="p4Title">Discount & Final Value Calculation</span>
+            </div>
+            <div class="calc-input-row">
+              <input type="number" id="p4_a" class="c-input" data-i18n="p4PlaceholderA" placeholder="원래 가격 A" value="89000">
+              <span data-i18n="p4LabelFrom">with</span>
+              <input type="number" id="p4_b" class="c-input" data-i18n="p4PlaceholderB" placeholder="할인율 B" value="20">
+              <span data-i18n="p4LabelPct">%</span>
+              <select id="p4_type" class="c-select">
+                <option value="dec" data-i18n="p4OptDec">Discount / Decrease</option>
+                <option value="inc" data-i18n="p4OptInc">Markup / Increase</option>
+              </select>
+            </div>
+            <div class="calc-output-box">
+              <div class="calc-output-label" data-i18n="p4Result">Final Amount</div>
+              <div class="calc-output-value" id="p4_res">71,200</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Mid Ad Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot ad-slot-banner">
+          <span>Google AdSense Mid-Content Unit (Responsive)</span>
+        </div>
+      </div>
+
+      <!-- In-Depth SEO Guide Section (Dual Language Switching) -->
+      <section class="content-guide-section">
+        
+        <!-- ================= KOREAN VERSION ================= -->
+        <div class="lang-ko">
+          <div class="content-guide-header">
+            <h2>백분율 및 할인율 완벽 공식 가이드</h2>
+            <p>퍼센트(Percentage)는 일상생활 쇼핑, 급여 인상, 금융 투자에서 가장 널리 쓰이는 수학적 비율 표현 방식입니다. 아래에서 각 연산의 공식과 실생활 예시를 확인하세요.</p>
+          </div>
+
+          <div class="guide-block">
+            <h3>퍼센트 연산 4대 핵심 공식</h3>
+            <div class="formula-card">
+              <div class="formula-card-title">1. 전체값의 비율 계산 공식</div>
+              <div class="formula-math">결과값 = 기준값 × (비율 % ÷ 100)</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-card-title">2. 증감률(수익률) 계산 공식</div>
+              <div class="formula-math">증감률(%) = ((변경 후 금액 - 변경 전 금액) ÷ 변경 전 금액) × 100</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-card-title">3. 쇼핑 할인 최종가 공식</div>
+              <div class="formula-math">할인가 = 정상가 × (1 - 할인율 % ÷ 100)</div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>실생활 활용 예시</h3>
+            <div class="examples-grid">
+              <div class="example-card">
+                <span class="example-badge">쇼핑 / 의류</span>
+                <div class="example-title">백화점 35% 타임 세일</div>
+                <div class="example-body">정가 120,000원 코트를 35% 할인하면? 120,000 × (1 - 0.35) = <strong>78,000원</strong>에 구매할 수 있습니다.</div>
+              </div>
+              <div class="example-card">
+                <span class="example-badge">투자 / 주식</span>
+                <div class="example-title">주식 매매 수익률</div>
+                <div class="example-body">1주당 40,000원에 매수한 주식이 52,000원이 되었다면? ((52000 - 40000) / 40000) × 100 = <strong>+30% 수익</strong>입니다.</div>
+              </div>
+              <div class="example-card">
+                <span class="example-badge">직장 / 급여</span>
+                <div class="example-title">연봉 인상률 계산</div>
+                <div class="example-body">기존 연봉 4,500만원에서 7% 인상 협상 완료 시: 4,500 × 1.07 = <strong>4,815만원</strong>으로 인상됩니다.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>자주 묻는 질문 (FAQ)</h3>
+            <div class="faq-wrap">
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>퍼센트포인트(%p)와 퍼센트(%)는 어떻게 다른가요?</span>
+                  <span class="faq-icon-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                  퍼센트(%)는 상대적인 변화율을 의미하며, 퍼센트포인트(%p)는 백분율 수치 자체의 단순 차이를 뜻합니다. 예를 들어 금리가 2%에서 4%로 올랐다면, 금리는 '2%p 상승'한 것이며, 비율상으로는 '100% 상승'한 것입니다.
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>1+1 행사나 2+1 행사는 몇 % 할인에 해당하나요?</span>
+                  <span class="faq-icon-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                  1+1 행사는 2개를 1개 가격에 사므로 정확히 <strong>50% 할인</strong>에 해당하며, 2+1 행사는 3개를 2개 가격에 사므로 약 <strong>33.3% 할인</strong>과 동일합니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= ENGLISH VERSION ================= -->
+        <div class="lang-en">
+          <div class="content-guide-header">
+            <h2>Complete Percentage & Discount Formula Guide</h2>
+            <p>Percentage is the most widely used mathematical proportion format in everyday shopping, salary increases, and financial investments. Learn the essential formulas and practical examples below.</p>
+          </div>
+
+          <div class="guide-block">
+            <h3>Core Percentage Formulas</h3>
+            <div class="formula-card">
+              <div class="formula-card-title">1. Portion of Value Formula</div>
+              <div class="formula-math">Result = Base Value × (Percentage % ÷ 100)</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-card-title">2. Percentage Change (ROI) Formula</div>
+              <div class="formula-math">Change Rate (%) = ((New Value - Old Value) ÷ Old Value) × 100</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-card-title">3. Discounted Final Price Formula</div>
+              <div class="formula-math">Final Price = Original Price × (1 - Discount Rate % ÷ 100)</div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>Practical Real-World Examples</h3>
+            <div class="examples-grid">
+              <div class="example-card">
+                <span class="example-badge">Shopping / Retail</span>
+                <div class="example-title">Department Store 35% Sale</div>
+                <div class="example-body">A $120 coat with a 35% discount: $120 × (1 - 0.35) = <strong>$78.00</strong> final checkout price.</div>
+              </div>
+              <div class="example-card">
+                <span class="example-badge">Investing / Stocks</span>
+                <div class="example-title">Stock Profit Return</div>
+                <div class="example-body">Bought at $40.00 and sold at $52.00: ((52 - 40) / 40) × 100 = <strong>+30% Profit</strong>.</div>
+              </div>
+              <div class="example-card">
+                <span class="example-badge">Career / Compensation</span>
+                <div class="example-title">Annual Salary Raise</div>
+                <div class="example-body">Current salary of $60,000 with a 7% increase: $60,000 × 1.07 = <strong>$64,200</strong>.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>Frequently Asked Questions (FAQ)</h3>
+            <div class="faq-wrap">
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>What is the difference between Percentage (%) and Percentage Points (%p)?</span>
+                  <span class="faq-icon-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                  Percentage (%) measures relative change, while percentage points (%p) measure the arithmetic difference between two percentage figures. For example, if interest rates climb from 2% to 4%, it rose by 2 percentage points, or a 100% relative increase.
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>How much discount is "Buy 1 Get 1 Free" or "Buy 2 Get 1 Free"?</span>
+                  <span class="faq-icon-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                  "Buy 1 Get 1 Free" equals exactly <strong>50% discount</strong> per item, while "Buy 2 Get 1 Free" equals approximately <strong>33.3% discount</strong> per item.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Bottom Ad Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot ad-slot-leaderboard">
+          <span>Google AdSense Bottom Responsive Unit (728 × 90)</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 0.75rem;">
+            <span class="logo-badge">∑</span>
+            <span class="brand-name" data-i18n="brandName">OmniCalc</span>
+          </div>
+          <p data-i18n="footerDesc">OmniCalc is a modern, high-speed multi-utility calculator built for students, professionals, and everyday users worldwide.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerTools">Calculators</h4>
+          <ul class="footer-links">
+            <li><a href="scientific.html" data-i18n="navScientific">Scientific</a></li>
+            <li><a href="percent.html" data-i18n="navPercent">Percent</a></li>
+            <li><a href="unit-converter.html" data-i18n="navUnit">Unit Converter</a></li>
+            <li><a href="fraction.html" data-i18n="navFraction">Fraction</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerLegal">Trust & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about.html" data-i18n="footerAbout">About Us</a></li>
+            <li><a href="../privacy.html" data-i18n="footerPrivacy">Privacy Policy</a></li>
+            <li><a href="../terms.html" data-i18n="footerTerms">Terms of Service</a></li>
+            <li><a href="../contact.html" data-i18n="footerContact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerAdmin">Site Admin</h4>
+          <ul class="footer-links">
+            <li><a href="../admin.html" class="footer-admin-link">운영자 통계 리더보드</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 OmniCalc. <span data-i18n="footerRights">All rights reserved.</span></div>
+        <div>Fast, Free, Ad-Supported Web Utility</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/tracker.js"></script>
+  <script src="../js/percent-calc.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

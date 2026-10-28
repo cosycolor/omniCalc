@@ -297,6 +297,10 @@ class I18nManager {
   }
 
   getInitialLanguage() {
+    const path = window.location.pathname || '';
+    if (path.includes('/en/') || path.endsWith('/en')) {
+      return 'en';
+    }
     const saved = localStorage.getItem('omni_lang');
     if (saved && (saved === 'ko' || saved === 'en')) {
       return saved;
@@ -361,6 +365,23 @@ class I18nManager {
 
   toggle() {
     const nextLang = this.currentLang === 'ko' ? 'en' : 'ko';
+    localStorage.setItem('omni_lang', nextLang);
+
+    // If served over HTTP/HTTPS, route between /en/ and root
+    if (window.location.protocol.startsWith('http')) {
+      const path = window.location.pathname;
+      let filename = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+      if (filename === '' || filename === 'en') filename = 'index.html';
+
+      if (nextLang === 'en' && !path.includes('/en/')) {
+        window.location.href = (filename === 'index.html') ? '/en/' : `/en/${filename}`;
+        return;
+      } else if (nextLang === 'ko' && path.includes('/en/')) {
+        window.location.href = (filename === 'index.html') ? '/' : `/${filename}`;
+        return;
+      }
+    }
+
     this.setLanguage(nextLang);
   }
 
