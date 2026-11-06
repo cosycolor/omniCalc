@@ -7,9 +7,9 @@
   <meta name="description" content="아파트 평수(평 ↔ ㎡), 길이(인치 ↔ cm), 무게(kg ↔ lb), 금 1돈 그램 변환까지 빠르고 정확하게 계산하는 무료 만능 스마트 단위 변환기입니다.">
   <meta name="keywords" content="평수 계산기, 아파트 평수 계산, 제곱미터 평수, 단위 변환기, 인치 센티미터, 파운드 킬로그램, unit converter">
 
-  <link rel="canonical" href="https://myomnicalc.com/unit-converter.html">
-  <link rel="alternate" hreflang="ko" href="https://myomnicalc.com/unit-converter.html">
-  <link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/unit-converter.html">
+  <link rel="canonical" href="https://myomnicalc.com/unit-converter">
+  <link rel="alternate" hreflang="ko" href="https://myomnicalc.com/unit-converter">
+  <link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/unit-converter">
 
   <!-- Favicon / App Icons -->
   <link rel="icon" type="image/svg+xml" href="https://myomnicalc.com/favicon.svg">
@@ -20,7 +20,7 @@
 
   <!-- Open Graph / Kakao / Search Engine Snippet -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://myomnicalc.com/unit-converter.html">
+  <meta property="og:url" content="https://myomnicalc.com/unit-converter">
   <meta property="og:title" content="단위 변환기 | 아파트 평수 ㎡ 환산 및 길이 무게 실시간 변환 (OmniCalc)">
   <meta property="og:description" content="아파트 평수(평 ↔ ㎡), 길이(인치 ↔ cm), 무게(kg ↔ lb), 금 1돈 그램 변환까지 빠르고 정확하게 계산하는 무료 만능 스마트 단위 변환기입니다.">
   <meta property="og:image" content="https://myomnicalc.com/og-image.jpg">
@@ -35,7 +35,7 @@
   <meta name="twitter:image" content="https://myomnicalc.com/og-image.jpg">
   <meta name="thumbnail" content="https://myomnicalc.com/og-image.jpg">
 
-  <script>(function(){try{var l=localStorage.getItem('omni_lang')||((navigator.language||'').toLowerCase().startsWith('ko')?'ko':'en');document.documentElement.lang=l;}catch(e){}})();</script>
+  <script>(function(){try{localStorage.setItem('omni_lang','ko');document.documentElement.lang='ko';}catch(e){}})();</script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/calculator.css">
   <link rel="stylesheet" href="css/content.css">
@@ -47,7 +47,7 @@
       {
         "@type": "WebApplication",
         "name": "스마트 단위 변환기 (OmniCalc)",
-        "url": "https://myomnicalc.com/unit-converter.html",
+        "url": "https://myomnicalc.com/unit-converter",
         "applicationCategory": "UtilitiesApplication"
       },
       {
@@ -79,18 +79,18 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand-logo" title="모두의 계산기 홈" data-i18n-title="logoTitle">
+      <a href="/" class="brand-logo" title="모두의 계산기 홈" data-i18n-title="logoTitle">
         <span class="logo-badge">∑</span>
         <span class="brand-name" data-i18n="brandName">모두의 계산기</span>
       </a>
 
       <nav>
         <ul class="nav-links">
-          <li class="nav-item"><a href="index.html" data-i18n="navHome">홈</a></li>
-          <li class="nav-item"><a href="scientific.html" data-i18n="navScientific">공학용</a></li>
-          <li class="nav-item"><a href="percent.html" data-i18n="navPercent">퍼센트</a></li>
-          <li class="nav-item active"><a href="unit-converter.html" data-i18n="navUnit">단위변환</a></li>
-          <li class="nav-item"><a href="fraction.html" data-i18n="navFraction">분수</a></li>
+          <li class="nav-item"><a href="/" data-i18n="navHome">홈</a></li>
+          <li class="nav-item"><a href="/scientific" data-i18n="navScientific">공학용</a></li>
+          <li class="nav-item"><a href="/percent" data-i18n="navPercent">퍼센트</a></li>
+          <li class="nav-item active"><a href="/unit-converter" data-i18n="navUnit">단위변환</a></li>
+          <li class="nav-item"><a href="/fraction" data-i18n="navFraction">분수</a></li>
         </ul>
       </nav>
 
@@ -314,27 +314,27 @@
         <div class="footer-col">
           <h4 data-i18n="footerTools">계산기 도구</h4>
           <ul class="footer-links">
-            <li><a href="scientific.html" data-i18n="navScientific">공학용 계산기</a></li>
-            <li><a href="percent.html" data-i18n="navPercent">퍼센트 계산기</a></li>
-            <li><a href="unit-converter.html" data-i18n="navUnit">단위 변환기</a></li>
-            <li><a href="fraction.html" data-i18n="navFraction">분수 계산기</a></li>
+            <li><a href="/scientific" data-i18n="navScientific">공학용 계산기</a></li>
+            <li><a href="/percent" data-i18n="navPercent">퍼센트 계산기</a></li>
+            <li><a href="/unit-converter" data-i18n="navUnit">단위 변환기</a></li>
+            <li><a href="/fraction" data-i18n="navFraction">분수 계산기</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 data-i18n="footerLegal">신뢰 및 정책</h4>
           <ul class="footer-links">
-            <li><a href="about.html" data-i18n="footerAbout">서비스 소개</a></li>
-            <li><a href="privacy.html" data-i18n="footerPrivacy">개인정보처리방침</a></li>
-            <li><a href="terms.html" data-i18n="footerTerms">이용약관</a></li>
-            <li><a href="contact.html" data-i18n="footerContact">문의하기</a></li>
+            <li><a href="/about" data-i18n="footerAbout">서비스 소개</a></li>
+            <li><a href="/privacy" data-i18n="footerPrivacy">개인정보처리방침</a></li>
+            <li><a href="/terms" data-i18n="footerTerms">이용약관</a></li>
+            <li><a href="/contact" data-i18n="footerContact">문의하기</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 data-i18n="footerAdmin">사이트 관리</h4>
           <ul class="footer-links">
-            <li><a href="admin.html" class="footer-admin-link">운영자 통계 리더보드</a></li>
+            <li><a href="/admin" class="footer-admin-link">운영자 통계 리더보드</a></li>
           </ul>
         </div>
       </div>

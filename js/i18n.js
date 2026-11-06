@@ -301,6 +301,13 @@ class I18nManager {
     if (path.includes('/en/') || path.endsWith('/en')) {
       return 'en';
     }
+    if (window.location.protocol.startsWith('http')) {
+      const slug = path.substring(path.lastIndexOf('/') + 1).replace(/\.html$/i, '');
+      const sharedPages = ['about', 'privacy', 'terms', 'contact', 'admin'];
+      if (!sharedPages.includes(slug)) {
+        return 'ko';
+      }
+    }
     const saved = localStorage.getItem('omni_lang');
     if (saved && (saved === 'ko' || saved === 'en')) {
       return saved;
@@ -367,18 +374,21 @@ class I18nManager {
     const nextLang = this.currentLang === 'ko' ? 'en' : 'ko';
     localStorage.setItem('omni_lang', nextLang);
 
-    // If served over HTTP/HTTPS, route between /en/ and root
+    // If served over HTTP/HTTPS, route between /en/ and root using Clean URLs
     if (window.location.protocol.startsWith('http')) {
       const path = window.location.pathname;
-      let filename = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-      if (filename === '' || filename === 'en') filename = 'index.html';
+      let slug = path.substring(path.lastIndexOf('/') + 1).replace(/\.html$/i, '');
+      if (slug === '' || slug === 'en') slug = 'index';
 
-      if (nextLang === 'en' && !path.includes('/en/')) {
-        window.location.href = (filename === 'index.html') ? '/en/' : `/en/${filename}`;
-        return;
-      } else if (nextLang === 'ko' && path.includes('/en/')) {
-        window.location.href = (filename === 'index.html') ? '/' : `/${filename}`;
-        return;
+      const sharedPages = ['about', 'privacy', 'terms', 'contact', 'admin'];
+      if (!sharedPages.includes(slug)) {
+        if (nextLang === 'en' && !path.includes('/en/') && !path.endsWith('/en')) {
+          window.location.href = (slug === 'index') ? '/en/' : `/en/${slug}`;
+          return;
+        } else if (nextLang === 'ko' && (path.includes('/en/') || path.endsWith('/en'))) {
+          window.location.href = (slug === 'index') ? '/' : `/${slug}`;
+          return;
+        }
       }
     }
 

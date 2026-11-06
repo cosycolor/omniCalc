@@ -7,9 +7,9 @@
   <meta name="description" content="쇼핑 세일 할인율, 주식 코인 수익률, 증가 감소 비율, 백분율 4대 연산을 실시간으로 정확하게 계산해주는 무료 온라인 퍼센트 계산기입니다.">
   <meta name="keywords" content="퍼센트 계산기, 할인율 계산기, 백분율 계산법, 증감률 계산, 수익률 계산기, percent calculator">
 
-  <link rel="canonical" href="https://myomnicalc.com/percent.html">
-  <link rel="alternate" hreflang="ko" href="https://myomnicalc.com/percent.html">
-  <link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/percent.html">
+  <link rel="canonical" href="https://myomnicalc.com/percent">
+  <link rel="alternate" hreflang="ko" href="https://myomnicalc.com/percent">
+  <link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/percent">
 
   <!-- Favicon / App Icons -->
   <link rel="icon" type="image/svg+xml" href="https://myomnicalc.com/favicon.svg">
@@ -20,7 +20,7 @@
 
   <!-- Open Graph / Kakao / Search Engine Snippet -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://myomnicalc.com/percent.html">
+  <meta property="og:url" content="https://myomnicalc.com/percent">
   <meta property="og:title" content="퍼센트 계산기 | 할인율 백분율 증감률 실시간 계산 (OmniCalc)">
   <meta property="og:description" content="쇼핑 할인율, 주식 수익률, 백분율 4대 연산을 실시간으로 정확하게 계산해주는 무료 온라인 퍼센트 계산기입니다.">
   <meta property="og:image" content="https://myomnicalc.com/og-image.jpg">
@@ -35,7 +35,7 @@
   <meta name="twitter:image" content="https://myomnicalc.com/og-image.jpg">
   <meta name="thumbnail" content="https://myomnicalc.com/og-image.jpg">
 
-  <script>(function(){try{var l=localStorage.getItem('omni_lang')||((navigator.language||'').toLowerCase().startsWith('ko')?'ko':'en');document.documentElement.lang=l;}catch(e){}})();</script>
+  <script>(function(){try{localStorage.setItem('omni_lang','ko');document.documentElement.lang='ko';}catch(e){}})();</script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/calculator.css">
   <link rel="stylesheet" href="css/content.css">
@@ -47,7 +47,7 @@
       {
         "@type": "WebApplication",
         "name": "퍼센트 계산기 (OmniCalc)",
-        "url": "https://myomnicalc.com/percent.html",
+        "url": "https://myomnicalc.com/percent",
         "applicationCategory": "BusinessApplication"
       },
       {
@@ -80,18 +80,18 @@
   <!-- Global Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand-logo" title="모두의 계산기 홈" data-i18n-title="logoTitle">
+      <a href="/" class="brand-logo" title="모두의 계산기 홈" data-i18n-title="logoTitle">
         <span class="logo-badge">∑</span>
         <span class="brand-name" data-i18n="brandName">모두의 계산기</span>
       </a>
 
       <nav>
         <ul class="nav-links">
-          <li class="nav-item"><a href="index.html" data-i18n="navHome">홈</a></li>
-          <li class="nav-item"><a href="scientific.html" data-i18n="navScientific">공학용</a></li>
-          <li class="nav-item active"><a href="percent.html" data-i18n="navPercent">퍼센트</a></li>
-          <li class="nav-item"><a href="unit-converter.html" data-i18n="navUnit">단위변환</a></li>
-          <li class="nav-item"><a href="fraction.html" data-i18n="navFraction">분수</a></li>
+          <li class="nav-item"><a href="/" data-i18n="navHome">홈</a></li>
+          <li class="nav-item"><a href="/scientific" data-i18n="navScientific">공학용</a></li>
+          <li class="nav-item active"><a href="/percent" data-i18n="navPercent">퍼센트</a></li>
+          <li class="nav-item"><a href="/unit-converter" data-i18n="navUnit">단위변환</a></li>
+          <li class="nav-item"><a href="/fraction" data-i18n="navFraction">분수</a></li>
         </ul>
       </nav>
 
@@ -386,27 +386,27 @@
         <div class="footer-col">
           <h4 data-i18n="footerTools">계산기 도구</h4>
           <ul class="footer-links">
-            <li><a href="scientific.html" data-i18n="navScientific">공학용 계산기</a></li>
-            <li><a href="percent.html" data-i18n="navPercent">퍼센트 계산기</a></li>
-            <li><a href="unit-converter.html" data-i18n="navUnit">단위 변환기</a></li>
-            <li><a href="fraction.html" data-i18n="navFraction">분수 계산기</a></li>
+            <li><a href="/scientific" data-i18n="navScientific">공학용 계산기</a></li>
+            <li><a href="/percent" data-i18n="navPercent">퍼센트 계산기</a></li>
+            <li><a href="/unit-converter" data-i18n="navUnit">단위 변환기</a></li>
+            <li><a href="/fraction" data-i18n="navFraction">분수 계산기</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 data-i18n="footerLegal">신뢰 및 정책</h4>
           <ul class="footer-links">
-            <li><a href="about.html" data-i18n="footerAbout">서비스 소개</a></li>
-            <li><a href="privacy.html" data-i18n="footerPrivacy">개인정보처리방침</a></li>
-            <li><a href="terms.html" data-i18n="footerTerms">이용약관</a></li>
-            <li><a href="contact.html" data-i18n="footerContact">문의하기</a></li>
+            <li><a href="/about" data-i18n="footerAbout">서비스 소개</a></li>
+            <li><a href="/privacy" data-i18n="footerPrivacy">개인정보처리방침</a></li>
+            <li><a href="/terms" data-i18n="footerTerms">이용약관</a></li>
+            <li><a href="/contact" data-i18n="footerContact">문의하기</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 data-i18n="footerAdmin">사이트 관리</h4>
           <ul class="footer-links">
-            <li><a href="admin.html" class="footer-admin-link">운영자 통계 리더보드</a></li>
+            <li><a href="/admin" class="footer-admin-link">운영자 통계 리더보드</a></li>
           </ul>
         </div>
       </div>

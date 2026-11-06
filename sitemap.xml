@@ -6,39 +6,39 @@
     <loc>https://myomnicalc.com/</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/"/>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://myomnicalc.com/scientific.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/scientific.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/scientific.html"/>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://myomnicalc.com/scientific</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/scientific"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/scientific"/>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://myomnicalc.com/percent.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/percent.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/percent.html"/>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://myomnicalc.com/percent</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/percent"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/percent"/>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://myomnicalc.com/unit-converter.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/unit-converter.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/unit-converter.html"/>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://myomnicalc.com/unit-converter</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/unit-converter"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/unit-converter"/>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://myomnicalc.com/fraction.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/fraction.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/fraction.html"/>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://myomnicalc.com/fraction</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/fraction"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/fraction"/>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -48,65 +48,65 @@
     <loc>https://myomnicalc.com/en/</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/"/>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://myomnicalc.com/en/scientific.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/scientific.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/scientific.html"/>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://myomnicalc.com/en/scientific</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/scientific"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/scientific"/>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://myomnicalc.com/en/percent.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/percent.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/percent.html"/>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://myomnicalc.com/en/percent</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/percent"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/percent"/>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://myomnicalc.com/en/unit-converter.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/unit-converter.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/unit-converter.html"/>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://myomnicalc.com/en/unit-converter</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/unit-converter"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/unit-converter"/>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://myomnicalc.com/en/fraction.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/fraction.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/fraction.html"/>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://myomnicalc.com/en/fraction</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/fraction"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/fraction"/>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Legal & Information Pages -->
   <url>
-    <loc>https://myomnicalc.com/about.html</loc>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://myomnicalc.com/about</loc>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://myomnicalc.com/privacy.html</loc>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://myomnicalc.com/privacy</loc>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://myomnicalc.com/terms.html</loc>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://myomnicalc.com/terms</loc>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://myomnicalc.com/contact.html</loc>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://myomnicalc.com/contact</loc>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
