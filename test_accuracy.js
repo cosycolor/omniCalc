@@ -135,6 +135,81 @@ fractionTests.forEach((t, i) => {
   console.log(`[${status}] #${i + 1} ${t.name}: 결과[${res}] (기대값: ${t.expected})`);
 });
 
+// Test New Calculators (Loan, BMI & BMR, Date & Age)
+console.log("\n=================================================");
+console.log(" 신규 계산기 3종 (대출이자 / BMI·BMR / 날짜·만나이) 검증 ");
+console.log("=================================================");
+
+function calcLoan(principal, annualRate, months, method) {
+  const r = (annualRate / 100) / 12;
+  if (method === 'equal_pi') {
+    const f = Math.pow(1 + r, months);
+    const m = principal * (r * f) / (f - 1);
+    return { monthly: Math.round(m), totalInterest: Math.round(m * months - principal) };
+  } else if (method === 'equal_p') {
+    const ti = principal * r * (months + 1) / 2;
+    return { monthly: Math.round((principal + ti) / months), totalInterest: Math.round(ti) };
+  } else {
+    const m = principal * r;
+    return { monthly: Math.round(m), totalInterest: Math.round(m * months) };
+  }
+}
+
+function calcBmiBmr(heightCm, weightKg, age, gender) {
+  const hm = heightCm / 100;
+  const bmi = (weightKg / (hm * hm)).toFixed(2);
+  let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) + (gender === 'male' ? 5 : -161);
+  return { bmi, bmr: Math.round(bmr) };
+}
+
+function calcDateDiff(startYMD, endYMD, includeStart) {
+  const s = startYMD.split('-').map(Number);
+  const e = endYMD.split('-').map(Number);
+  const sUTC = Date.UTC(s[0], s[1] - 1, s[2]);
+  const eUTC = Date.UTC(e[0], e[1] - 1, e[2]);
+  return Math.abs(Math.round((eUTC - sUTC) / 86400000)) + (includeStart ? 1 : 0);
+}
+
+const newCalcTests = [
+  {
+    name: "대출 원리금균등 (1억, 4.5%, 36개월)",
+    actual: JSON.stringify(calcLoan(100000000, 4.5, 36, 'equal_pi')),
+    expected: JSON.stringify({ monthly: 2974692, totalInterest: 7088928 })
+  },
+  {
+    name: "대출 원금균등 총이자 (1억, 4.5%, 36개월)",
+    actual: calcLoan(100000000, 4.5, 36, 'equal_p').totalInterest.toString(),
+    expected: "6937500"
+  },
+  {
+    name: "대출 만기일시 총이자 (1억, 4.5%, 36개월)",
+    actual: calcLoan(100000000, 4.5, 36, 'bullet').totalInterest.toString(),
+    expected: "13500000"
+  },
+  {
+    name: "BMI 및 남성 기초대사량 (172cm, 68kg, 30세)",
+    actual: JSON.stringify(calcBmiBmr(172, 68, 30, 'male')),
+    expected: JSON.stringify({ bmi: "22.99", bmr: 1610 })
+  },
+  {
+    name: "날짜 계산 윤년 포함 (2024-02-01 ~ 2024-03-01, 초일불산입)",
+    actual: calcDateDiff("2024-02-01", "2024-03-01", false).toString(),
+    expected: "29"
+  },
+  {
+    name: "날짜 계산 커플 기념일 (2026-01-01 ~ 2026-04-10, 초일산입 100일)",
+    actual: calcDateDiff("2026-01-01", "2026-04-10", true).toString(),
+    expected: "100"
+  }
+];
+
+newCalcTests.forEach((t, i) => {
+  const isMatch = t.actual === t.expected;
+  if (isMatch) passed++;
+  const status = isMatch ? " PASS " : " FAIL ";
+  console.log(`[${status}] #${i + 1} ${t.name}: 결과[${t.actual}] (기대값: ${t.expected})`);
+});
+
 // Performance Benchmark: Run 10,000 evaluations
 console.log("\n=================================================");
 console.log(" 성능 벤치마크 (10,000회 연속 수식 연산 속도 측정) ");
@@ -144,7 +219,8 @@ for (let i = 0; i < 10000; i++) {
   evaluateExpression("sin(30) + sqrt(144) × 2^3 - log(100)", "DEG");
 }
 const elapsed = Date.now() - start;
+const totalTests = tests.length + fractionTests.length + newCalcTests.length;
 console.log(`10,000회 고난도 수식 연산 소요 시간: ${elapsed}ms (1회당 약 ${(elapsed / 10000).toFixed(4)}ms)`);
 console.log(`초당 연산 처리량(Throughput): ${Math.round(10000 / (elapsed / 1000))} ops/sec`);
-console.log(`전체 테스트 통과율: ${passed} / ${tests.length + fractionTests.length} (${Math.round((passed / (tests.length + fractionTests.length)) * 100)}%)`);
+console.log(`전체 테스트 통과율: ${passed} / ${totalTests} (${Math.round((passed / totalTests) * 100)}%)`);
 console.log("=================================================");

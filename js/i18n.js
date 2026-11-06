@@ -16,11 +16,14 @@ const I18N_DICTIONARY = {
     navPercent: "퍼센트",
     navUnit: "단위변환",
     navFraction: "분수",
+    navLoan: "대출이자",
+    navBmi: "BMI·비만도",
+    navDate: "날짜·만나이",
     navAdmin: "관리자",
 
     // Hero Texts
     heroTitleHome: "정확하고 빠른 무료 스마트 계산기",
-    heroDescHome: "사칙연산부터 공학 수식, 퍼센트, 단위 변환까지 브라우저에서 즉시 해결하세요.",
+    heroDescHome: "사칙연산부터 공학 수식, 퍼센트, 단위 변환, 대출이자, BMI, 날짜 계산까지 브라우저에서 즉시 해결하세요.",
     heroTitleSci: "스마트 공학용 계산기",
     heroDescSci: "삼각함수, 지수, 로그, 제곱근 등 복잡한 수식을 직관적인 키패드로 계산하세요.",
     heroTitlePercent: "실생활 퍼센트 및 할인율 계산기",
@@ -29,6 +32,12 @@ const I18N_DICTIONARY = {
     heroDescUnit: "아파트 평수(평 ↔ ㎡), 길이, 무게, 온도를 한눈에 빠르고 정확하게 변환합니다.",
     heroTitleFraction: "분수 사칙연산 및 약분 계산기",
     heroDescFraction: "분수 더하기, 빼기, 곱하기, 나누기와 기약분수 자동 약분을 즉시 확인하세요.",
+    heroTitleLoan: "대출 이자 및 상환금 계산기",
+    heroDescLoan: "원리금균등, 원금균등, 만기일시상환 방식별 월 납입금과 총 대출 이자를 실시간으로 비교하세요.",
+    heroTitleBmi: "BMI 비만도 및 기초대사량(BMR) 계산기",
+    heroDescBmi: "신장과 체중으로 체질량지수(BMI), 대한비만학회 기준 비만도, 권장 표준 체중과 일일 기초대사량을 확인하세요.",
+    heroTitleDate: "날짜 D-Day 및 만 나이 계산기",
+    heroDescDate: "두 날짜 사이의 일수(D-Day), 기준일로부터 N일 전후 날짜, 정확한 만 나이와 살아온 일수를 계산하세요.",
 
     // Calculator Common
     copySuccess: "결과가 클립보드에 복사되었습니다.",
@@ -49,6 +58,12 @@ const I18N_DICTIONARY = {
     toolUnitDesc: "아파트 평수, 길이, 무게, 면적",
     toolFractionTitle: "분수 계산기",
     toolFractionDesc: "분수 사칙연산, 기약분수 자동 약분",
+    toolLoanTitle: "대출 이자 계산기",
+    toolLoanDesc: "원리금균등, 원금균등, 월 상환액 계산",
+    toolBmiTitle: "BMI 비만도 계산기",
+    toolBmiDesc: "체질량지수, 표준체중, 기초대사량",
+    toolDateTitle: "날짜·만나이 계산기",
+    toolDateDesc: "D-Day 일수, 기념일, 정확한 만 나이",
 
     // Percent Calculator Specifics
     p1Title: "전체값의 일정 비율 계산",
@@ -157,11 +172,14 @@ const I18N_DICTIONARY = {
     navPercent: "Percent",
     navUnit: "Unit Converter",
     navFraction: "Fraction",
+    navLoan: "Loan",
+    navBmi: "BMI & BMR",
+    navDate: "Date & Age",
     navAdmin: "Admin",
 
     // Hero Texts
     heroTitleHome: "Smart, Fast & Free Online Calculator",
-    heroDescHome: "From basic math to scientific formulas, percentages, and unit conversions right in your browser.",
+    heroDescHome: "From basic math to scientific formulas, percentages, units, loan payments, BMI, and date calculations right in your browser.",
     heroTitleSci: "Smart Scientific Calculator",
     heroDescSci: "Compute trigonometry, powers, logarithms, and roots with a sleek, responsive keypad.",
     heroTitlePercent: "Percent & Discount Calculator",
@@ -170,6 +188,12 @@ const I18N_DICTIONARY = {
     heroDescUnit: "Convert area (sq ft ↔ m²), length, weight, and temperature accurately.",
     heroTitleFraction: "Fraction Calculator & Simplifier",
     heroDescFraction: "Add, subtract, multiply, divide fractions with automatic greatest common divisor reduction.",
+    heroTitleLoan: "Loan & Mortgage Payment Calculator",
+    heroDescLoan: "Compare monthly payments and total interest across amortized, equal principal, and interest-only loans.",
+    heroTitleBmi: "BMI & Basal Metabolic Rate (BMR) Calculator",
+    heroDescBmi: "Check your Body Mass Index, weight category, healthy weight range, and daily calorie burn (BMR).",
+    heroTitleDate: "Date Duration, D-Day & Age Calculator",
+    heroDescDate: "Calculate exact days between dates, add or subtract days from any date, and find your exact chronological age.",
 
     // Calculator Common
     copySuccess: "Result copied to clipboard.",
@@ -190,6 +214,12 @@ const I18N_DICTIONARY = {
     toolUnitDesc: "Area (Sq Ft/m²), Length, Weight, Temp",
     toolFractionTitle: "Fraction Calculator",
     toolFractionDesc: "Arithmetic & Auto Simplification",
+    toolLoanTitle: "Loan Calculator",
+    toolLoanDesc: "Monthly Payment, Amortization & Interest",
+    toolBmiTitle: "BMI & BMR Calculator",
+    toolBmiDesc: "Body Mass Index, Ideal Weight & Calories",
+    toolDateTitle: "Date & Age Calculator",
+    toolDateDesc: "Days Between Dates, D-Day & Exact Age",
 
     // Percent Calculator Specifics
     p1Title: "Calculate Percentage of Value",

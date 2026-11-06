@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대출 이자 계산기 | 원리금균등 원금균등 만기일시 월 상환금 비교 (OmniCalc)</title>
+  <meta name="description" content="대출 원금, 금리, 기간에 따른 원리금균등상환, 원금균등상환, 만기일시상환 방식별 월 납입금과 총 대출 이자를 실시간으로 비교하는 무료 온라인 대출 계산기입니다.">
+  <meta name="keywords" content="대출 이자 계산기, 대출 상환 계산기, 원리금균등상환 계산기, 원금균등상환 계산기, 만기일시상환, 주택담보대출 이자 계산, 월 상환액 계산">
+
+  <link rel="canonical" href="https://myomnicalc.com/loan">
+  <link rel="alternate" hreflang="ko" href="https://myomnicalc.com/loan">
+  <link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/loan">
+
+  <!-- Favicon / App Icons -->
+  <link rel="icon" type="image/svg+xml" href="https://myomnicalc.com/favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://myomnicalc.com/favicon-192x192.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://myomnicalc.com/favicon-48x48.png">
+  <link rel="apple-touch-icon" href="https://myomnicalc.com/favicon-192x192.png">
+  <link rel="shortcut icon" href="https://myomnicalc.com/favicon.ico">
+
+  <!-- Open Graph / Kakao / Search Engine Snippet -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://myomnicalc.com/loan">
+  <meta property="og:title" content="대출 이자 계산기 | 원리금균등 원금균등 만기일시 월 상환금 비교 (OmniCalc)">
+  <meta property="og:description" content="원리금균등, 원금균등, 만기일시상환 방식별 월 납입금과 총 대출 이자를 실시간으로 계산하고 비교하세요.">
+  <meta property="og:image" content="https://myomnicalc.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675">
+  <meta property="og:image:alt" content="대출 이자 계산기 (OmniCalc)">
+
+  <!-- Twitter Card & Search Engine Thumbnail -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="대출 이자 계산기 | 원리금균등 원금균등 만기일시 월 상환금 비교 (OmniCalc)">
+  <meta name="twitter:description" content="원리금균등, 원금균등, 만기일시상환 방식별 월 납입금과 총 대출 이자를 실시간으로 비교하세요.">
+  <meta name="twitter:image" content="https://myomnicalc.com/og-image.jpg">
+  <meta name="thumbnail" content="https://myomnicalc.com/og-image.jpg">
+
+  <script>(function(){try{localStorage.setItem('omni_lang','ko');document.documentElement.lang='ko';}catch(e){}})();</script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/calculator.css">
+  <link rel="stylesheet" href="css/content.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "대출 이자 및 상환금 계산기 (OmniCalc)",
+        "url": "https://myomnicalc.com/loan",
+        "applicationCategory": "FinanceApplication"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "원리금균등상환과 원금균등상환 중 어떤 방식이 이자가 더 저렴한가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "총 대출 이자 부담은 '원금균등상환' 방식이 가장 저렴합니다. 매달 동일한 원금을 먼저 갚아나가므로 남은 대출 잔액이 빠르게 줄어들기 때문입니다. 반면 매월 지출액을 일정하게 관리하고 싶다면 '원리금균등상환'이 유리합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "중도상환수수료는 언제 면제되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "대부분의 제1금융권 은행 대출은 대출 실행일로부터 만 3년(36개월)이 경과하면 중도상환수수료가 면제됩니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" title="모두의 계산기 홈" data-i18n-title="logoTitle">
+        <span class="logo-badge">∑</span>
+        <span class="brand-name" data-i18n="brandName">모두의 계산기</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="/" data-i18n="navHome">홈</a></li>
+          <li class="nav-item"><a href="/scientific" data-i18n="navScientific">공학용</a></li>
+          <li class="nav-item"><a href="/percent" data-i18n="navPercent">퍼센트</a></li>
+          <li class="nav-item"><a href="/unit-converter" data-i18n="navUnit">단위변환</a></li>
+          <li class="nav-item"><a href="/fraction" data-i18n="navFraction">분수</a></li>
+          <li class="nav-item active"><a href="/loan" data-i18n="navLoan">대출이자</a></li>
+          <li class="nav-item"><a href="/bmi" data-i18n="navBmi">BMI·비만도</a></li>
+          <li class="nav-item"><a href="/date" data-i18n="navDate">날짜·만나이</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="langToggleBtn" class="lang-selector" aria-label="언어 변경">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <span>한국어</span>
+        </button>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="테마 전환" data-i18n-aria="themeToggleLabel">
+          <span id="themeToggleIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+        </button>
+        <button id="mobileNavToggle" class="btn-icon mobile-nav-toggle" aria-label="메뉴 열기" data-i18n-aria="mobileNavLabel">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="container">
+
+      <section class="page-hero">
+        <h1 data-i18n="heroTitleLoan">대출 이자 및 상환금 계산기</h1>
+        <p data-i18n="heroDescLoan">원리금균등, 원금균등, 만기일시상환 방식별 월 납입금과 총 대출 이자를 실시간으로 비교하세요.</p>
+      </section>
+
+      <div class="specialized-card" style="max-width: 780px;">
+        <div class="spec-calc-grid" style="margin-bottom: 1.5rem;">
+          <div class="calc-box-item">
+            <div class="calc-box-title">대출 원금 (원)</div>
+            <div class="calc-input-row">
+              <input type="number" id="loan_principal" class="c-input" value="100000000" min="0" step="1000000" placeholder="예: 100000000">
+            </div>
+            <div class="calc-box-title" style="margin-top: 0.5rem;">연 이자율 (%)</div>
+            <div class="calc-input-row" style="margin-bottom: 0;">
+              <input type="number" id="loan_rate" class="c-input" value="4.5" min="0" max="100" step="0.1" placeholder="예: 4.5">
+            </div>
+          </div>
+
+          <div class="calc-box-item">
+            <div class="calc-box-title">대출 기간 (개월)</div>
+            <div class="calc-input-row">
+              <input type="number" id="loan_months" class="c-input" value="36" min="1" max="600" step="1" placeholder="예: 36 (3년)">
+            </div>
+            <div class="calc-box-title" style="margin-top: 0.5rem;">상환 방식 선택</div>
+            <div class="calc-input-row" style="margin-bottom: 0;">
+              <select id="loan_method" class="c-select" style="width: 100%;">
+                <option value="equal_pi">원리금균등상환 (매월 동일 금액)</option>
+                <option value="equal_p">원금균등상환 (매월 동일 원금)</option>
+                <option value="bullet">만기일시상환 (매월 이자만 납부)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="spec-calc-grid">
+          <div class="calc-output-box" style="text-align: center;">
+            <div class="calc-output-label">월 평균 납입금 (원금+이자)</div>
+            <div class="calc-output-value" id="loan_res_monthly">2,974,692 원</div>
+          </div>
+          <div class="calc-output-box" style="text-align: center;">
+            <div class="calc-output-label">총 대출 이자 합계</div>
+            <div class="calc-output-value" id="loan_res_interest" style="color: var(--accent-green);">7,088,928 원</div>
+          </div>
+          <div class="calc-output-box" style="text-align: center;">
+            <div class="calc-output-label">총 상환 금액 (원금+총이자)</div>
+            <div class="calc-output-value" id="loan_res_total" style="font-size: 1.35rem;">107,088,928 원</div>
+          </div>
+          <div class="calc-output-box" style="text-align: center;">
+            <div class="calc-output-label">원금 대비 총 이자 비율</div>
+            <div class="calc-output-value" id="loan_res_ratio" style="font-size: 1.35rem;">7.09%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rich SEO Content Guide Section -->
+      <section class="content-guide-section">
+        <div class="guide-card">
+          <h2>대출 상환 방식 3가지 완벽 비교 및 이자 계산 공식</h2>
+          <p>
+            주택담보대출, 전세자금대출, 신용대출 등 금융권 대출 상품을 이용할 때 가장 중요한 의사결정은 <strong>상환 방식(Repayment Method)</strong>의 선택입니다. 동일한 대출 원금과 금리 조건이라도 상환 방식에 따라 매달 통장에서 빠져나가는 월 상환액과 만기까지 지불하는 총이자 비용이 수백만 원에서 수천만 원까지 차이 날 수 있습니다.
+          </p>
+
+          <h3>1. 원리금균등상환 (Equal Principal and Interest)</h3>
+          <p>
+            가장 대중적으로 사용되는 상환 방식으로, 대출 기간 동안 <strong>원금과 이자를 합산한 매월 납입금을 똑같이 고정</strong>하여 납부하는 방식입니다. 초기에는 납입금 중 이자 비중이 크고 원금 상환 비중이 작지만, 회차가 지날수록 원금 비중이 커지고 이자 비중이 줄어듭니다. 매월 지출되는 금융 비용이 일정하므로 직장인이나 가계의 고정 지출 예산을 세우기에 가장 안정적입니다.
+          </p>
+          <div class="formula-box">
+            <strong>원리금균등 월 납입금 공식:</strong><br>
+            <code>M = P × [ r × (1 + r)^n ] ÷ [ (1 + r)^n − 1 ]</code>
+            <span class="formula-desc">* P: 대출 원금, r: 월 이자율(연이율 ÷ 12), n: 총 상환 개월 수</span>
+          </div>
+
+          <h3>2. 원금균등상환 (Equal Principal / Decreasing Payment)</h3>
+          <p>
+            대출 원금을 대출 기간(개월 수)으로 똑같이 나누어 매달 동일한 원금을 갚고, 이자는 매달 줄어드는 남은 잔액에 대해서만 계산하여 납부하는 방식입니다. 첫 달 상환 부담이 가장 크지만 시간이 지날수록 매월 납입금이 계단식으로 줄어들며, <strong>3가지 상환 방식 중 총 대출 이자가 가장 적게 발생</strong>한다는 강력한 장점이 있습니다.
+          </p>
+          <div class="formula-box">
+            <strong>원금균등 총 이자 합계 공식:</strong><br>
+            <code>총 이자 = P × r × (n + 1) ÷ 2</code>
+            <span class="formula-desc">* 매월 납부 원금 = P ÷ n (일정), 매월 납부 이자 = 잔여 원금 × r (매월 감소)</span>
+          </div>
+
+          <h3>3. 만기일시상환 (Bullet / Interest-Only Repayment)</h3>
+          <p>
+            대출 기간 동안에는 원금을 전혀 갚지 않고 <strong>매월 이자만 납부하다가 대출 만기일에 원금 전액을 일시에 상환</strong>하는 방식입니다. 전세자금대출이나 마이너스 통장, 단기 사업자 대출에서 주로 활용됩니다. 월간 현금 흐름 부담은 가장 적지만, 원금이 줄어들지 않으므로 <strong>총 대출 이자 비용은 가장 많이 발생</strong>하며 만기 시 목돈 상환 또는 연장 계획을 철저히 세워야 합니다.
+          </p>
+        </div>
+
+        <div class="guide-card">
+          <h2>1억 원 대출 시 상환 방식별 실제 이자 비교표 (연 4.5%, 3년 기준)</h2>
+          <p>
+            대출 원금 1억 원을 연 금리 4.5%, 36개월(3년) 동안 빌렸을 때 상환 방식에 따른 실제 납입 금액 차이입니다.
+          </p>
+          <div class="example-table-wrapper">
+            <table class="example-table">
+              <thead>
+                <tr>
+                  <th>상환 방식</th>
+                  <th>월 납입금 특징</th>
+                  <th>총 대출 이자</th>
+                  <th>총 상환 금액</th>
+                  <th>추천 대상</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>원금균등상환</strong></td>
+                  <td>첫 달 약 315만 원 → 마지막 달 약 279만 원</td>
+                  <td><strong>6,937,500 원 (최저)</strong></td>
+                  <td>106,937,500 원</td>
+                  <td>초기 상환 여력이 충분하고 총이자를 아끼고 싶은 분</td>
+                </tr>
+                <tr>
+                  <td><strong>원리금균등상환</strong></td>
+                  <td>매월 <strong>2,974,692 원</strong> 고정</td>
+                  <td>7,088,928 원</td>
+                  <td>107,088,928 원</td>
+                  <td>매월 일정한 급여로 안정적인 지출 관리를 원하는 분</td>
+                </tr>
+                <tr>
+                  <td><strong>만기일시상환</strong></td>
+                  <td>매월 이자 <strong>375,000 원</strong> + 만기 원금 1억</td>
+                  <td>13,500,000 원 (최고)</td>
+                  <td>113,500,000 원</td>
+                  <td>전세대출 등 만기 시 보증금으로 일시 상환 예정인 분</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="guide-card">
+          <h2 data-i18n="faqTitle">자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            <div class="faq-item active">
+              <button class="faq-question" type="button">
+                <span>원리금균등상환과 원금균등상환 중 어떤 것이 더 유리한가요?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  순수하게 <strong>총 이자 비용을 줄이는 것이 목표라면 '원금균등상환'</strong>이 무조건 유리합니다. 하지만 대출 초기 1~3년 차의 월 납입금 부담이 원리금균등보다 높기 때문에, 현재 가처분 소득과 DSR(총부채원리금상환비율) 한도를 고려하여 선택하는 것이 좋습니다.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>거치 기간(Grace Period)이란 무엇인가요?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  대출 실행 후 일정 기간(예: 1년 또는 2년) 동안은 원금을 갚지 않고 이자만 납부하다가, 거치 기간이 끝난 뒤부터 원금과 이자를 함께 분할 상환하는 제도입니다. 초기 부담은 줄어들지만 원금 상환이 늦어지는 만큼 총 이자 부담은 늘어납니다.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>고정금리와 변동금리 중 무엇을 선택해야 하나요?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  중앙은행 기준금리가 상승기이거나 장기간(10~30년) 안정적인 상환 계획을 원한다면 <strong>고정금리(또는 5년 혼합형)</strong>가 안전합니다. 반대로 향후 1~2년 내 금리 인하가 예상되거나 단기 상환 예정이라면 <strong>변동금리(COFIX 연동 등)</strong>가 유리할 수 있습니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 0.75rem;">
+            <span class="logo-badge">∑</span>
+            <span class="brand-name" data-i18n="brandName">모두의 계산기</span>
+          </div>
+          <p data-i18n="footerDesc">모두의 계산기(OmniCalc)는 학생, 엔지니어, 직장인 누구나 무료로 쉽고 빠르게 사용할 수 있는 웹 기반 다기능 계산기 플랫폼입니다.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerTools">계산기 도구</h4>
+          <ul class="footer-links">
+            <li><a href="/scientific" data-i18n="navScientific">공학용 계산기</a></li>
+            <li><a href="/percent" data-i18n="navPercent">퍼센트 계산기</a></li>
+            <li><a href="/unit-converter" data-i18n="navUnit">단위 변환기</a></li>
+            <li><a href="/fraction" data-i18n="navFraction">분수 계산기</a></li>
+            <li><a href="/loan" data-i18n="navLoan">대출 이자 계산기</a></li>
+            <li><a href="/bmi" data-i18n="navBmi">BMI 비만도 계산기</a></li>
+            <li><a href="/date" data-i18n="navDate">날짜·만나이 계산기</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerLegal">신뢰 및 정책</h4>
+          <ul class="footer-links">
+            <li><a href="/about" data-i18n="footerAbout">서비스 소개</a></li>
+            <li><a href="/privacy" data-i18n="footerPrivacy">개인정보처리방침</a></li>
+            <li><a href="/terms" data-i18n="footerTerms">이용약관</a></li>
+            <li><a href="/contact" data-i18n="footerContact">문의하기</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 OmniCalc. <span data-i18n="footerRights">모든 권리 보유.</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/loan-calc.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

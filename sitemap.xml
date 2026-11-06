@@ -42,6 +42,30 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://myomnicalc.com/loan</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/loan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/loan"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://myomnicalc.com/bmi</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/bmi"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/bmi"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://myomnicalc.com/date</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/date"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/date"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
   <!-- English Global Pages -->
   <url>
@@ -83,6 +107,30 @@
     <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://myomnicalc.com/en/loan</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/loan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/loan"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://myomnicalc.com/en/bmi</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/bmi"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/bmi"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://myomnicalc.com/en/date</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://myomnicalc.com/date"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://myomnicalc.com/en/date"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- Legal & Information Pages -->

@@ -396,7 +396,7 @@ button {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 2.5rem;
   margin-bottom: 2.5rem;
 }
@@ -486,10 +486,10 @@ button {
   }
 }
 
-/* AdSense Slot Placeholders (CLS Zero Guaranteed) */
+/* AdSense Slot Placeholders (Hidden until AdSense approval) */
 .ad-slot-container {
+  display: none;
   margin: 1.5rem auto;
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
