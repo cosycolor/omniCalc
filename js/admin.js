@@ -80,7 +80,10 @@ class AdminPortal {
       percent: { name: '퍼센트 및 할인율 계산기' },
       scientific: { name: '스마트 공학용 계산기' },
       unit: { name: '스마트 단위 변환기' },
-      fraction: { name: '분수 사칙연산 계산기' }
+      fraction: { name: '분수 사칙연산 계산기' },
+      loan: { name: '대출 이자 및 상환금 계산기' },
+      bmi: { name: 'BMI 비만도 및 기초대사량 계산기' },
+      date: { name: '날짜 D-Day 및 만 나이 계산기' }
     };
 
     const calcEntries = Object.entries(data.calculatorStats).map(([key, count]) => ({

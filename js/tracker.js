@@ -31,7 +31,10 @@ class OmniTracker {
         scientific: 124,
         percent: 168,
         unit: 78,
-        fraction: 48
+        fraction: 48,
+        loan: 64,
+        bmi: 52,
+        date: 41
       },
       countryStats: {
         KR: 65,
@@ -124,6 +127,9 @@ class OmniTracker {
       else if (path.includes('percent')) pageType = 'percent';
       else if (path.includes('unit')) pageType = 'unit';
       else if (path.includes('fraction')) pageType = 'fraction';
+      else if (path.includes('loan')) pageType = 'loan';
+      else if (path.includes('bmi')) pageType = 'bmi';
+      else if (path.includes('date')) pageType = 'date';
       else if (path.includes('admin')) pageType = null; // Do not count admin as tool
 
       if (pageType) {
