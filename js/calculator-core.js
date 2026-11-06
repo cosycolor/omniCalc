@@ -107,56 +107,101 @@ class ScientificCalculator {
 
   /**
    * Evaluates the expression with high mathematical precision
+   * Supports nested parentheses, exponents on expressions, implicit multiplication, and exact trig values
    */
   evaluate(expr) {
     if (!expr || expr.trim() === '') return '';
 
-    // Sanitize and replace math symbols
     let parsed = expr
       .replace(/×/g, '*')
       .replace(/÷/g, '/')
-      .replace(/−/g, '-')
+      .replace(/−/g, '-');
+
+    // Implicit multiplication: e.g. 2π -> 2*π, 2(3) -> 2*(3), (2)(3) -> (2)*(3), 2sin(30) -> 2*sin(30)
+    parsed = parsed
+      .replace(/(\d|\))(?=\(|π|\be\b|sin|cos|tan|asin|acos|atan|log|ln|sqrt|√)/g, '$1*')
+      .replace(/(π|\be\b)(?=\d|\(|π|\be\b|sin|cos|tan|asin|acos|atan|log|ln|sqrt|√)/g, '$1*');
+
+    // Constants
+    parsed = parsed
       .replace(/π/g, 'Math.PI')
       .replace(/\be\b/g, 'Math.E');
 
-    // Handle Square Root
-    parsed = parsed.replace(/sqrt\(/g, 'Math.sqrt(');
-    parsed = parsed.replace(/√\(/g, 'Math.sqrt(');
+    // Percent: 50% -> (50 * 0.01)
+    parsed = parsed.replace(/(\d+(?:\.\d+)?)%/g, '($1*0.01)');
 
-    // Handle Logarithms
-    parsed = parsed.replace(/log\(/g, 'Math.log10(');
-    parsed = parsed.replace(/ln\(/g, 'Math.log(');
+    // Map functions to precision-safe helpers
+    parsed = parsed
+      .replace(/\basin\(/g, '__asin(')
+      .replace(/\bacos\(/g, '__acos(')
+      .replace(/\batan\(/g, '__atan(')
+      .replace(/\bsin\(/g, '__sin(')
+      .replace(/\bcos\(/g, '__cos(')
+      .replace(/\btan\(/g, '__tan(')
+      .replace(/\blog\(/g, '__log(')
+      .replace(/\bln\(/g, '__ln(')
+      .replace(/\bsqrt\(/g, '__sqrt(')
+      .replace(/√\(/g, '__sqrt(');
 
-    // Handle Exponents (e.g. 2^3 -> Math.pow(2, 3))
-    parsed = parsed.replace(/([0-9.]+|\b[a-zA-Z0-9_.]+\b)\^([0-9.]+|\b[a-zA-Z0-9_.]+\b)/g, 'Math.pow($1, $2)');
+    // Exponents: convert ^ to JS ** operator
+    parsed = parsed.replace(/\^/g, '**');
 
-    // Handle Trigonometry according to Degree / Radian mode
-    const toRad = this.angleMode === 'DEG' ? ' * (Math.PI / 180)' : '';
-    const fromRad = this.angleMode === 'DEG' ? ' * (180 / Math.PI)' : '';
-
-    // Handle Inverse Trigonometry with word boundaries
-    parsed = parsed.replace(/\basin\(([^)]+)\)/g, `(Math.asin($1)${fromRad})`);
-    parsed = parsed.replace(/\bacos\(([^)]+)\)/g, `(Math.acos($1)${fromRad})`);
-    parsed = parsed.replace(/\batan\(([^)]+)\)/g, `(Math.atan($1)${fromRad})`);
-
-    // Handle Regular Trigonometry with word boundaries
-    parsed = parsed.replace(/\bsin\(([^)]+)\)/g, `Math.sin(($1)${toRad})`);
-    parsed = parsed.replace(/\bcos\(([^)]+)\)/g, `Math.cos(($1)${toRad})`);
-    parsed = parsed.replace(/\btan\(([^)]+)\)/g, `Math.tan(($1)${toRad})`);
-
-    // Handle Percent (e.g. 50% -> 50 * 0.01)
-    parsed = parsed.replace(/([0-9.]+)%/g, '($1 * 0.01)');
-
-    // Whitelist check: only numbers, operators, parens, and standard math identifiers
-    if (!/^[0-9+\-*/().,MathPIEsqrlogasincoctanpow\s]+$/i.test(parsed)) {
+    // Whitelist check
+    if (!/^[0-9+\-*/().,_a-zA-Z\s]+$/.test(parsed)) {
       return null;
     }
 
+    const isDeg = this.angleMode === 'DEG';
+    const __sin = (x) => {
+      if (isDeg) {
+        const mod = ((x % 360) + 360) % 360;
+        if (mod === 0 || mod === 180) return 0;
+        if (mod === 30 || mod === 150) return 0.5;
+        if (mod === 210 || mod === 330) return -0.5;
+        if (mod === 90) return 1;
+        if (mod === 270) return -1;
+        return Math.sin(x * Math.PI / 180);
+      }
+      return Math.sin(x);
+    };
+    const __cos = (x) => {
+      if (isDeg) {
+        const mod = ((x % 360) + 360) % 360;
+        if (mod === 90 || mod === 270) return 0;
+        if (mod === 60 || mod === 300) return 0.5;
+        if (mod === 120 || mod === 240) return -0.5;
+        if (mod === 0) return 1;
+        if (mod === 180) return -1;
+        return Math.cos(x * Math.PI / 180);
+      }
+      return Math.cos(x);
+    };
+    const __tan = (x) => {
+      if (isDeg) {
+        const mod = ((x % 180) + 180) % 180;
+        if (mod === 90) return NaN; // Undefined asymptote
+        if (mod === 0) return 0;
+        if (mod === 45) return 1;
+        if (mod === 135) return -1;
+        return Math.tan(x * Math.PI / 180);
+      }
+      return Math.tan(x);
+    };
+    const __asin = (x) => isDeg ? (Math.asin(x) * 180 / Math.PI) : Math.asin(x);
+    const __acos = (x) => isDeg ? (Math.acos(x) * 180 / Math.PI) : Math.acos(x);
+    const __atan = (x) => isDeg ? (Math.atan(x) * 180 / Math.PI) : Math.atan(x);
+    const __log = (x) => (x <= 0 ? NaN : Math.log10(x));
+    const __ln = (x) => (x <= 0 ? NaN : Math.log(x));
+    const __sqrt = (x) => (x < 0 ? NaN : Math.sqrt(x));
+
     try {
-      // Safe mathematical evaluation using controlled Function
-      const res = Function(`"use strict"; return (${parsed})`)();
+      const fn = new Function(
+        '__sin', '__cos', '__tan', '__asin', '__acos', '__atan', '__log', '__ln', '__sqrt',
+        `"use strict"; return (${parsed});`
+      );
+      const res = fn(__sin, __cos, __tan, __asin, __acos, __atan, __log, __ln, __sqrt);
       if (typeof res === 'number' && !isNaN(res) && isFinite(res)) {
-        // Clean up floating point anomalies (e.g. 0.1 + 0.2 = 0.30000000000000004)
+        if (Math.abs(res) < 1e-14) return '0';
         return parseFloat(res.toPrecision(12)).toString();
       }
       return null;

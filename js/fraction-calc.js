@@ -8,7 +8,6 @@ class FractionCalculator {
     this.init();
   }
 
-  // Greatest Common Divisor
   gcd(a, b) {
     a = Math.abs(a);
     b = Math.abs(b);
@@ -21,18 +20,19 @@ class FractionCalculator {
   }
 
   calculate() {
-    const num1 = parseInt(document.getElementById('f_num1')?.value);
-    const den1 = parseInt(document.getElementById('f_den1')?.value);
-    const op = document.getElementById('f_op')?.value; // '+', '-', '*', '/'
-    const num2 = parseInt(document.getElementById('f_num2')?.value);
-    const den2 = parseInt(document.getElementById('f_den2')?.value);
+    const isEn = (document.documentElement.lang || '').startsWith('en');
+    const num1 = parseInt(document.getElementById('f_num1')?.value, 10);
+    const den1 = parseInt(document.getElementById('f_den1')?.value, 10);
+    const op = document.getElementById('f_op')?.value;
+    const num2 = parseInt(document.getElementById('f_num2')?.value, 10);
+    const den2 = parseInt(document.getElementById('f_den2')?.value, 10);
 
     const resFractionEl = document.getElementById('f_res_fraction');
     const resMixedEl = document.getElementById('f_res_mixed');
     const resDecimalEl = document.getElementById('f_res_decimal');
 
     if (isNaN(num1) || isNaN(den1) || isNaN(num2) || isNaN(den2) || den1 === 0 || den2 === 0) {
-      if (resFractionEl) resFractionEl.textContent = '0';
+      if (resFractionEl) resFractionEl.textContent = den1 === 0 || den2 === 0 ? (isEn ? 'Denominator cannot be 0' : '분모는 0이 될 수 없음') : '0';
       if (resMixedEl) resMixedEl.textContent = '-';
       if (resDecimalEl) resDecimalEl.textContent = '0';
       return;
@@ -54,30 +54,28 @@ class FractionCalculator {
       finalNum = num1 * den2;
       finalDen = den1 * num2;
       if (finalDen === 0) {
-        if (resFractionEl) resFractionEl.textContent = '0으로 나눌 수 없음';
+        if (resFractionEl) resFractionEl.textContent = isEn ? 'Cannot divide by 0' : '0으로 나눌 수 없음';
+        if (resMixedEl) resMixedEl.textContent = '-';
+        if (resDecimalEl) resDecimalEl.textContent = '-';
         return;
       }
     }
 
-    // Keep denominator positive
     if (finalDen < 0) {
       finalNum = -finalNum;
       finalDen = -finalDen;
     }
 
-    // Simplify with GCD
     const divisor = this.gcd(finalNum, finalDen);
     const simpNum = finalNum / divisor;
     const simpDen = finalDen / divisor;
 
-    // Render Simplified Fraction
     if (simpDen === 1) {
       resFractionEl.textContent = simpNum.toString();
     } else {
       resFractionEl.innerHTML = `<sup>${simpNum}</sup>&frasl;<sub>${simpDen}</sub> (${simpNum}/${simpDen})`;
     }
 
-    // Mixed Fraction
     if (Math.abs(simpNum) >= simpDen && simpDen !== 1) {
       const whole = Math.trunc(simpNum / simpDen);
       const rem = Math.abs(simpNum % simpDen);
@@ -87,10 +85,9 @@ class FractionCalculator {
         resMixedEl.innerHTML = `${whole} <sup>${rem}</sup>&frasl;<sub>${simpDen}</sub>`;
       }
     } else {
-      resMixedEl.textContent = '진분수 (대분수 없음)';
+      resMixedEl.textContent = isEn ? 'Proper fraction (No mixed form)' : '진분수 (대분수 없음)';
     }
 
-    // Decimal
     const decimalVal = simpNum / simpDen;
     resDecimalEl.textContent = parseFloat(decimalVal.toFixed(6)).toString();
 
@@ -105,6 +102,7 @@ class FractionCalculator {
     });
 
     document.getElementById('f_op')?.addEventListener('change', () => this.calculate());
+    window.addEventListener('languageChanged', () => this.calculate());
     this.calculate();
   }
 }

@@ -72,7 +72,7 @@ class PercentCalculator {
 
   formatNumber(val) {
     if (Number.isInteger(val)) return val.toLocaleString();
-    return parseFloat(val.toFixed(4)).toLocaleString();
+    return parseFloat(val.toFixed(4)).toLocaleString(undefined, { maximumFractionDigits: 4 });
   }
 
   track(desc) {

@@ -124,7 +124,9 @@ html[lang="en"] .lang-ko {
 }
 
 /* Base Reset & Typography */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -146,7 +148,7 @@ body {
   display: flex;
   flex-direction: column;
   transition: background-color var(--transition-normal), color var(--transition-normal);
-  background-image: 
+  background-image:
     radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
     radial-gradient(at 0% 100%, rgba(59, 130, 246, 0.06) 0px, transparent 50%);
   background-attachment: fixed;
@@ -480,6 +482,7 @@ button {
     opacity: 0;
     transform: translateY(16px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -540,18 +543,23 @@ button {
   .nav-links {
     display: none;
   }
+
   .mobile-nav-toggle {
     display: inline-flex;
   }
+
   .page-hero h1 {
     font-size: 1.75rem;
   }
+
   .tools-nav-grid {
     grid-template-columns: 1fr 1fr;
   }
+
   .footer-grid {
     grid-template-columns: 1fr;
   }
+
   .footer-bottom {
     flex-direction: column;
     gap: 0.75rem;

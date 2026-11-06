@@ -100,6 +100,7 @@ const I18N_DICTIONARY = {
     unitAreaTab: "면적 / 평수",
     unitLengthTab: "길이 / 거리",
     unitWeightTab: "무게 / 질량",
+    unitTempTab: "온도 (°C/°F)",
     unitInputPlaceholder: "수치 입력",
     unitResultLabel: "변환된 수치",
 
@@ -256,6 +257,7 @@ const I18N_DICTIONARY = {
     unitAreaTab: "Area",
     unitLengthTab: "Length",
     unitWeightTab: "Weight",
+    unitTempTab: "Temperature",
     unitInputPlaceholder: "Enter Value",
     unitResultLabel: "Converted Value",
 

@@ -18,6 +18,7 @@ class LoanCalculator {
   }
 
   calculate() {
+    const isEn = (document.documentElement.lang || '').startsWith('en');
     const principal = parseFloat(document.getElementById('loan_principal')?.value);
     const annualRate = parseFloat(document.getElementById('loan_rate')?.value);
     const months = parseInt(document.getElementById('loan_months')?.value, 10);
@@ -38,34 +39,45 @@ class LoanCalculator {
 
     const r = (annualRate / 100) / 12;
     let monthlyPayment = 0;
+    let firstMonthPayment = 0;
     let totalInterest = 0;
     let totalPayment = 0;
 
     if (r === 0) {
       monthlyPayment = principal / months;
+      firstMonthPayment = monthlyPayment;
       totalInterest = 0;
       totalPayment = principal;
     } else if (method === 'equal_pi') {
-      // 원리금균등상환: M = P * [r(1+r)^n] / [(1+r)^n - 1]
       const factor = Math.pow(1 + r, months);
       monthlyPayment = principal * (r * factor) / (factor - 1);
+      firstMonthPayment = monthlyPayment;
       totalPayment = monthlyPayment * months;
       totalInterest = totalPayment - principal;
     } else if (method === 'equal_p') {
-      // 원금균등상환: 총 이자 = P * r * (n + 1) / 2, 첫 달 상환액 표시 및 평균 안내
+      // 원금균등상환: 매월 납부 원금 = P / n, 첫 달 이자 = P * r, 총 이자 = P * r * (n + 1) / 2
+      firstMonthPayment = (principal / months) + (principal * r);
       totalInterest = principal * r * (months + 1) / 2;
       totalPayment = principal + totalInterest;
-      monthlyPayment = totalPayment / months; // 월 평균 상환액
+      monthlyPayment = totalPayment / months;
     } else if (method === 'bullet') {
-      // 만기일시상환: 매월 이자만 납부, 만기에 원금 일시 상환
       monthlyPayment = principal * r;
+      firstMonthPayment = monthlyPayment;
       totalInterest = monthlyPayment * months;
       totalPayment = principal + totalInterest;
     }
 
     const ratio = (totalInterest / principal) * 100;
 
-    if (resMonthlyEl) resMonthlyEl.textContent = this.formatCurrency(monthlyPayment);
+    if (resMonthlyEl) {
+      if (method === 'equal_p' && r > 0) {
+        resMonthlyEl.innerHTML = isEn
+          ? `1st Mo: ${this.formatCurrency(firstMonthPayment)} <div style="font-size:0.8rem; font-weight:500; color:var(--text-secondary); margin-top:4px;">Avg: ${this.formatCurrency(monthlyPayment)}/mo</div>`
+          : `첫 달 ${this.formatCurrency(firstMonthPayment)} <div style="font-size:0.8rem; font-weight:500; color:var(--text-secondary); margin-top:4px;">월평균: ${this.formatCurrency(monthlyPayment)}</div>`;
+      } else {
+        resMonthlyEl.textContent = this.formatCurrency(monthlyPayment);
+      }
+    }
     if (resInterestEl) resInterestEl.textContent = this.formatCurrency(totalInterest);
     if (resTotalEl) resTotalEl.textContent = this.formatCurrency(totalPayment);
     if (resRatioEl) resRatioEl.textContent = `${ratio.toFixed(2)}%`;

@@ -129,13 +129,24 @@ class DateCalculator {
     const todayUTC = Date.UTC(tYear, tMonth - 1, tDay);
     const livedDays = Math.max(0, Math.round((todayUTC - birthUTC) / 86400000));
 
+    // Next Birthday D-Day
+    let nextBdayYear = tYear;
+    if (tMonth > bMonth || (tMonth === bMonth && tDay > bDay)) {
+      nextBdayYear += 1;
+    }
+    const nextBdayUTC = Date.UTC(nextBdayYear, bMonth - 1, bDay);
+    const daysToBday = Math.max(0, Math.round((nextBdayUTC - todayUTC) / 86400000));
+
     if (resAgeEl) {
-      resAgeEl.textContent = isEn ? `${age} yrs old` : `만 ${age}세`;
+      resAgeEl.textContent = isEn ? `${Math.max(0, age)} yrs old` : `만 ${Math.max(0, age)}세`;
     }
     if (resLivedEl) {
-      resLivedEl.textContent = isEn
-        ? `${livedDays.toLocaleString()} days lived`
-        : `태어난 지 ${livedDays.toLocaleString()}일째`;
+      const bdayBadge = daysToBday === 0
+        ? (isEn ? '🎉 Today is your birthday!' : '🎉 오늘이 생일입니다!')
+        : (isEn ? `Next birthday: D-${daysToBday}` : `다음 생일: D-${daysToBday}일`);
+      resLivedEl.innerHTML = isEn
+        ? `${livedDays.toLocaleString()} days lived <div style="font-size:0.85rem; color:var(--text-secondary); margin-top:4px;">${bdayBadge}</div>`
+        : `태어난 지 ${livedDays.toLocaleString()}일째 <div style="font-size:0.85rem; color:var(--text-secondary); margin-top:4px;">${bdayBadge}</div>`;
     }
   }
 
@@ -163,3 +174,4 @@ document.addEventListener('DOMContentLoaded', () => {
     new DateCalculator();
   }
 });
+
